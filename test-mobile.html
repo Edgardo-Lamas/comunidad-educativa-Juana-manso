@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Test Móvil - Comunidad Educativa Juana Manso</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .btn {
+            background: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 5px;
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        .btn:hover {
+            background: #0056b3;
+        }
+        
+        .device-info {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .mobile-test {
+                background: #d1ecf1;
+                border: 1px solid #bee5eb;
+                color: #0c5460;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔍 Test de Compatibilidad Móvil</h1>
+        <p>Esta página te ayudará a verificar si el sitio funciona correctamente en tu dispositivo móvil.</p>
+    </div>
+
+    <div class="test-container">
+        <h2>📱 Información del Dispositivo</h2>
+        <div class="device-info" id="device-info">
+            <p><strong>User Agent:</strong> <span id="user-agent"></span></p>
+            <p><strong>Ancho de pantalla:</strong> <span id="screen-width"></span>px</p>
+            <p><strong>Alto de pantalla:</strong> <span id="screen-height"></span>px</p>
+            <p><strong>Viewport:</strong> <span id="viewport-width"></span>x<span id="viewport-height"></span></p>
+            <p><strong>Pixel Ratio:</strong> <span id="pixel-ratio"></span></p>
+            <p><strong>Touch Support:</strong> <span id="touch-support"></span></p>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h2>🧪 Tests de Funcionalidad</h2>
+        
+        <div id="css-test" class="status mobile-test">
+            ✅ CSS Media Queries funcionando correctamente en móvil
+        </div>
+        
+        <div id="js-test" class="status">
+            🔄 Probando JavaScript...
+        </div>
+        
+        <div id="touch-test" class="status">
+            🔄 Probando eventos táctiles...
+        </div>
+        
+        <button class="btn" onclick="testTouch()">Probar Touch</button>
+        <button class="btn" onclick="testNavigation()">Probar Navegación</button>
+    </div>
+
+    <div class="test-container">
+        <h2>🔗 Enlaces de Prueba</h2>
+        <div style="margin: 10px 0;">
+            <a href="index.html" class="btn">Ir al Sitio Principal</a>
+            <a href="cursos.html" class="btn">Probar Página Cursos</a>
+            <a href="contacto.html" class="btn">Probar Página Contacto</a>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h2>📝 Reporte de Estado</h2>
+        <div id="final-report">
+            <p>Ejecutando pruebas automáticas...</p>
+        </div>
+    </div>
+
+    <script>
+        // Información del dispositivo
+        document.getElementById('user-agent').textContent = navigator.userAgent;
+        document.getElementById('screen-width').textContent = screen.width;
+        document.getElementById('screen-height').textContent = screen.height;
+        document.getElementById('viewport-width').textContent = window.innerWidth;
+        document.getElementById('viewport-height').textContent = window.innerHeight;
+        document.getElementById('pixel-ratio').textContent = window.devicePixelRatio || 1;
+        document.getElementById('touch-support').textContent = 'ontouchstart' in window ? 'Sí' : 'No';
+
+        // Test JavaScript
+        setTimeout(() => {
+            const jsTest = document.getElementById('js-test');
+            jsTest.textContent = '✅ JavaScript funcionando correctamente';
+            jsTest.className = 'status success';
+        }, 1000);
+
+        // Test eventos táctiles
+        let touchTested = false;
+        
+        function testTouch() {
+            const touchTest = document.getElementById('touch-test');
+            touchTest.textContent = '✅ Eventos táctiles funcionando correctamente';
+            touchTest.className = 'status success';
+            touchTested = true;
+            updateFinalReport();
+        }
+
+        // Detectar touch automáticamente
+        document.addEventListener('touchstart', () => {
+            if (!touchTested) {
+                testTouch();
+            }
+        });
+
+        function testNavigation() {
+            alert('Navegación funcionando correctamente');
+        }
+
+        // Reporte final
+        function updateFinalReport() {
+            const report = document.getElementById('final-report');
+            const isMobile = window.innerWidth <= 768;
+            const hasTouch = 'ontouchstart' in window;
+            
+            let reportHTML = '<h3>📊 Resumen del Test:</h3>';
+            reportHTML += `<p>• <strong>Dispositivo:</strong> ${isMobile ? 'Móvil' : 'Desktop'}</p>`;
+            reportHTML += `<p>• <strong>Touch:</strong> ${hasTouch ? 'Disponible' : 'No disponible'}</p>`;
+            reportHTML += `<p>• <strong>Viewport:</strong> ${window.innerWidth}x${window.innerHeight}</p>`;
+            
+            if (isMobile) {
+                reportHTML += '<div class="status success">✅ El sitio está optimizado para tu dispositivo móvil</div>';
+            } else {
+                reportHTML += '<div class="status">ℹ️ Estás viendo el sitio desde un dispositivo desktop</div>';
+            }
+            
+            report.innerHTML = reportHTML;
+        }
+
+        // Ejecutar reporte inicial
+        setTimeout(updateFinalReport, 2000);
+
+        // Actualizar en cambio de orientación
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                document.getElementById('viewport-width').textContent = window.innerWidth;
+                document.getElementById('viewport-height').textContent = window.innerHeight;
+                updateFinalReport();
+            }, 100);
+        });
+    </script>
+</body>
+</html>

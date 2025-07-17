@@ -33,17 +33,60 @@ window.addEventListener('scroll', () => {
 const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.getElementById('nav-links');
 
-menuToggle?.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    menuToggle.classList.toggle('active');
+// Función para cerrar el menú móvil
+const closeMobileMenu = () => {
+    if (navLinks) navLinks.classList.remove('active');
+    if (menuToggle) menuToggle.classList.remove('active');
+    document.body.style.overflow = '';
+};
+
+// Función para abrir el menú móvil
+const openMobileMenu = () => {
+    if (navLinks) navLinks.classList.add('active');
+    if (menuToggle) menuToggle.classList.add('active');
+    document.body.style.overflow = 'hidden';
+};
+
+// Toggle del menú móvil
+menuToggle?.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (navLinks && navLinks.classList.contains('active')) {
+        closeMobileMenu();
+    } else {
+        openMobileMenu();
+    }
 });
 
-// Close mobile menu when clicking on a link
+// Cerrar menú cuando se hace click en un enlace
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
-        if (navLinks) navLinks.classList.remove('active');
-        if (menuToggle) menuToggle.classList.remove('active');
+        closeMobileMenu();
     });
+});
+
+// Cerrar menú cuando se hace click fuera de él
+document.addEventListener('click', (e) => {
+    if (navLinks && navLinks.classList.contains('active') && 
+        !navLinks.contains(e.target) && 
+        !menuToggle.contains(e.target)) {
+        closeMobileMenu();
+    }
+});
+
+// Cerrar menú con escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks && navLinks.classList.contains('active')) {
+        closeMobileMenu();
+    }
+});
+
+// Prevenir scroll en background cuando el menú está abierto
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        closeMobileMenu();
+    }
 });
 
 // Active Navigation Highlight
