@@ -3,257 +3,290 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comunidad Educativa Juana Manso - Pabellón 16B</title>
-    <meta name="description" content="Comunidad Educativa Juana Manso - Pabellón 16B, Unidad 9. Cursos de capacitación laboral: RCP, paneles solares, promotor de salud, proceso penal, género y prevención. Educación para la resocialización.">
-    <!-- Anti-cache headers más agresivos -->
+    <title>Comunidad Educativa Juana Manso - Pabellón 16B | Educación para la Resocialización</title>
+    <meta name="description" content="Comunidad Educativa Juana Manso - Pabellón 16B, Unidad 9. Primer año fomentando la educación y cultura para la resocialización. Cursos: RCP, paneles solares, promotor de salud, proceso penal, género y prevención.">
+    <meta name="keywords" content="educación penitenciaria, resocialización, cursos capacitación, RCP, paneles solares, promotor salud, proceso penal, género, ley micaela">
+    <meta name="author" content="Comunidad Educativa Juana Manso">
+    
+    <!-- Open Graph para redes sociales -->
+    <meta property="og:title" content="Comunidad Educativa Juana Manso - Pabellón 16B">
+    <meta property="og:description" content="Educación y cultura como marco principal para la resocialización">
+    <meta property="og:type" content="website">
+    
+    <!-- Anti-cache headers -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <style>
-        /* ===== RESET Y BASE ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* ===== HEADER ===== */
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: white;
-            padding-top: 80px;
-        }
-
-        .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            background: #f39c12;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            transition: all 0.3s;
-            font-weight: 600;
-            margin: 0 10px;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(243, 156, 18, 0.4);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid white;
-        }
-
-        .btn-outline:hover {
-            background: white;
-            color: #667eea;
-        }
-
-        /* ===== SECCIONES ===== */
-        .section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #2c3e50;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #f39c12, #e67e22);
-            border-radius: 2px;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: rgba(102, 126, 234, 0.95);
-                flex-direction: column;
-                padding: 2rem;
-                text-align: center;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-
-        /* ===== SMOOTH SCROLL ===== */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* ===== AVISO SITIO NUEVO ===== */
-        .sitio-nuevo-aviso {
-            position: fixed;
-            top: 70px;
-            right: 20px;
-            background: #e74c3c;
-            color: white;
-            padding: 15px 25px;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: bold;
-            z-index: 9999;
-            animation: bounce 1s infinite;
-            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        /* Efecto especial para indicar que es nuevo */
-        .nuevo-sitio-banner {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            font-weight: bold;
-            font-size: 16px;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { box-shadow: 0 0 5px #ff6b6b; }
-            to { box-shadow: 0 0 20px #ff6b6b, 0 0 30px #ff6b6b; }
-        }
-    </style>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- Banner indicando sitio nuevo -->
-    <div class="nuevo-sitio-banner">
-        🚀 SITIO COMPLETAMENTE NUEVO - SIN CACHE ANTIGUO 🚀
-    </div>
-
-    <!-- Aviso flotante -->
-    <div class="sitio-nuevo-aviso">
-        ✨ NUEVA URL - SIN CACHE
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loader"></div>
     </div>
 
     <!-- Header -->
-    <header class="header">
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="./" class="logo">
+                <span class="emoji">🎓</span>
+                <span>Comunidad Educativa Juana Manso</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="./">Inicio</a></li>
+                <li><a href="historia.html">Nuestra Historia</a></li>
+                <li><a href="cursos.html">Cursos</a></li>
+                <li><a href="noticias.html">Noticias</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    🎉 Celebrando nuestro primer aniversario - Julio 2025
+                </div>
+                <h1>Comunidad Educativa Juana Manso</h1>
+                <h2>Pabellón 16B - Unidad 9</h2>
+                <p>
+                    Fomentando la <strong>educación y la cultura</strong> como marco principal para la resocialización. 
+                    Un año transformando vidas a través del conocimiento y la capacitación profesional.
+                </p>
+                <div class="hero-buttons">
+                    <a href="cursos.html" class="btn btn-primary">Explorar Cursos</a>
+                    <a href="contacto.html" class="btn btn-outline">Más Información</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estadísticas -->
+    <section class="stats fade-in">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>100+</h3>
+                    <p>Alumnos Capacitados en RCP</p>
+                </div>
+                <div class="stat-item">
+                    <h3>6</h3>
+                    <p>Cursos Especializados</p>
+                </div>
+                <div class="stat-item">
+                    <h3>1</h3>
+                    <p>Año de Trayectoria</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10+</h3>
+                    <p>Clases de RCP Realizadas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eventos Destacados -->
+    <section id="eventos-destacados" class="section fade-in">
+        <div class="container">
+            <h2 class="section-title">Eventos Destacados</h2>
+            <p class="section-subtitle">
+                Celebraciones y hitos importantes de nuestra comunidad educativa
+            </p>
+            
+            <!-- Evento Principal - Aniversario -->
+            <div class="news-grid" style="margin-bottom: 4rem;">
+                <article class="news-card" style="grid-column: 1 / -1; max-width: 800px; margin: 0 auto;">
+                    <div class="news-header" style="background: linear-gradient(135deg, #f39c12, #e74c3c);">
+                        <div class="news-date">11 de Julio de 2025</div>
+                        <h3 class="news-title">🎉 PRIMER ANIVERSARIO - Un Año Transformando Vidas</h3>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Celebramos con orgullo nuestro primer aniversario. Lo que comenzó como una idea y un bosquejo 
+                            en julio de 2024, hoy es una realidad que ha transformado la vida de más de 100 personas. 
+                            Coincidiendo con el cierre del primer cuatrimestre, entregamos certificados a nuestros graduados, 
+                            marcando un hito histórico en la educación penitenciaria de la Unidad 9.
+                        </p>
+                        <div class="news-tags">
+                            <span class="news-tag">Aniversario</span>
+                            <span class="news-tag">Certificaciones</span>
+                            <span class="news-tag">Hito Histórico</span>
+                        </div>
+                        <div style="margin-top: 1.5rem;">
+                            <a href="noticias.html" class="btn btn-secondary">Ver Todas las Noticias</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Próximos Eventos -->
+            <div class="cards-grid">
+                <div class="card">
+                    <span class="card-icon">📋</span>
+                    <h3>Inscripciones Abiertas</h3>
+                    <p>Segundo cuatrimestre 2025. Nuevas inscripciones para todos nuestros cursos. Consultar en Oficina de Judiciales por horarios y disponibilidad.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🎖️</span>
+                    <h3>Próxima Graduación</h3>
+                    <p>Ceremonia de entrega de certificados prevista para diciembre 2025. Reconocimiento a los nuevos graduados de nuestros programas de capacitación.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🔄</span>
+                    <h3>Nuevos Talleres</h3>
+                    <p>Estamos desarrollando nuevos programas educativos basados en las necesidades identificadas y el éxito de nuestras capacitaciones actuales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resumen de Cursos -->
+    <section id="cursos-resumen" class="section" style="background: var(--background-light);">
+        <div class="container">
+            <h2 class="section-title">Nuestros Cursos</h2>
+            <p class="section-subtitle">
+                Capacitaciones especializadas para el desarrollo personal y profesional
+            </p>
+            <div class="cards-grid">
+                <div class="card">
+                    <span class="card-icon">🚑</span>
+                    <h3>RCP y Primeros Auxilios</h3>
+                    <p>Más de 100 alumnos capacitados desde marzo 2025. Técnicas de reanimación cardiopulmonar y primeros auxilios básicos.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">☀️</span>
+                    <h3>Paneles Solares</h3>
+                    <p>Instalación, mantenimiento y energías renovables. Clases los miércoles con enfoque práctico y técnico.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🏥</span>
+                    <h3>Promotor de Salud</h3>
+                    <p>Programa integral dictado por profesionales de Salud Penitenciaria del SPB.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">⚖️</span>
+                    <h3>Proceso Penal</h3>
+                    <p>Orientación legal sobre ejecución de la pena en la Provincia de Buenos Aires.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">👥</span>
+                    <h3>Género y Ley Micaela</h3>
+                    <p>Abordaje integral sobre violencias de género y promoción de la igualdad.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🛡️</span>
+                    <h3>Prevención de Consumos</h3>
+                    <p>Programa especializado en prevención de consumos problemáticos.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="cursos.html" class="btn btn-primary">Ver Todos los Cursos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios/Logros -->
+    <section id="testimonios" class="section fade-in">
+        <div class="container">
+            <h2 class="section-title">Nuestros Logros</h2>
+            <p class="section-subtitle">
+                Impacto real en la comunidad educativa
+            </p>
+            <div class="cards-grid">
+                <div class="card">
+                    <span class="card-icon">📊</span>
+                    <h3>Impacto Cuantificable</h3>
+                    <p>Más de 100 personas capacitadas en RCP, 10 clases realizadas, 6 programas activos y un año de crecimiento continuo.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🤝</span>
+                    <h3>Apoyo Institucional</h3>
+                    <p>Respaldo total de las autoridades de la Unidad 9 y colaboración estrecha con profesionales especializados.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🌱</span>
+                    <h3>Crecimiento Sostenido</h3>
+                    <p>Expansión constante de programas, donaciones de material educativo y reconocimiento de la comunidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🎓 Comunidad Educativa Juana Manso</h3>
+                    <p>
+                        Fomentando la educación y la cultura como marco principal para la resocialización. 
+                        Transformando vidas a través del conocimiento desde el Pabellón 16B.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Email">📧</a>
+                        <a href="#" class="social-link" aria-label="Teléfono">📞</a>
+                        <a href="#" class="social-link" aria-label="Ubicación">📍</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Nuestros Cursos</h3>
+                    <p><a href="cursos.html">RCP y Primeros Auxilios</a></p>
+                    <p><a href="cursos.html">Paneles Solares</a></p>
+                    <p><a href="cursos.html">Promotor de Salud</a></p>
+                    <p><a href="cursos.html">Proceso Penal</a></p>
+                    <p><a href="cursos.html">Género y Ley Micaela</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navegación</h3>
+                    <p><a href="historia.html">Nuestra Historia</a></p>
+                    <p><a href="noticias.html">Noticias</a></p>
+                    <p><a href="galeria.html">Galería</a></p>
+                    <p><a href="contacto.html">Contacto</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span class="current-year">2025</span> Comunidad Educativa Juana Manso - Pabellón 16B, Unidad 9. Todos los derechos reservados.<br>
+                    <strong>Educación para la Resocialización | Primer Aniversario 2024-2025</strong>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
         <nav class="nav container">
             <div class="logo">
-                🎓 Comunidad Educativa Juana Manso
+                <span class="emoji">🎓</span>
+                <span>Comunidad Educativa Juana Manso</span>
             </div>
             <ul class="nav-links" id="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#inicio" class="active">Inicio</a></li>
+                <li><a href="#sobre-nosotros">Nuestra Historia</a></li>
                 <li><a href="#cursos">Cursos</a></li>
                 <li><a href="#noticias">Noticias</a></li>
                 <li><a href="#contacto">Contacto</a></li>
@@ -266,102 +299,566 @@
         </nav>
     </header>
 
-    <!-- Hero -->
+    <!-- Hero Section -->
     <section id="inicio" class="hero">
         <div class="container">
             <div class="hero-content">
+                <div class="hero-badge">
+                    🎉 Celebrando nuestro primer aniversario - Julio 2025
+                </div>
                 <h1>Comunidad Educativa Juana Manso</h1>
                 <h2>Pabellón 16B - Unidad 9</h2>
-                <p>🎉 SITIO COMPLETAMENTE NUEVO 🎉<br>
-                Fomentando la educación y la cultura como marco principal para la resocialización, ofreciendo cursos y capacitaciones para el desarrollo personal y profesional.</p>
-                <a href="#contacto" class="btn">Contactar</a>
-                <a href="#contacto" class="btn btn-outline">Información</a>
+                <p>
+                    Fomentando la <strong>educación y la cultura</strong> como marco principal para la resocialización. 
+                    Un año transformando vidas a través del conocimiento y la capacitación profesional.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#cursos" class="btn btn-primary">Explorar Cursos</a>
+                    <a href="#contacto" class="btn btn-outline">Más Información</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estadísticas -->
+    <section class="stats fade-in">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>100+</h3>
+                    <p>Alumnos Capacitados en RCP</p>
+                </div>
+                <div class="stat-item">
+                    <h3>6</h3>
+                    <p>Cursos Especializados</p>
+                </div>
+                <div class="stat-item">
+                    <h3>1</h3>
+                    <p>Año de Trayectoria</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10+</h3>
+                    <p>Clases de RCP Realizadas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nosotros -->
+    <section id="sobre-nosotros" class="section fade-in">
+        <div class="container">
+            <h2 class="section-title">Nuestra Historia</h2>
+            <p class="section-subtitle">
+                Lo que comenzó como una idea y un bosquejo, hoy es una realidad que transforma vidas
+            </p>
+            <div class="cards-grid">
+                <div class="card">
+                    <span class="card-icon">💡</span>
+                    <h3>El Comienzo</h3>
+                    <p>Julio 2024 marcó el inicio de nuestra comunidad educativa, cuando las autoridades de la Unidad 9 de La Plata dieron el visto bueno para autogestionar cursos y talleres especializados.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🎯</span>
+                    <h3>Nuestra Misión</h3>
+                    <p>Brindar herramientas educativas y de capacitación que ayuden a la integración social una vez obtenida la libertad, promoviendo la resocialización efectiva.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🏆</span>
+                    <h3>Primer Aniversario</h3>
+                    <p>Celebramos nuestro primer año de vida coincidiendo con el cierre del primer cuatrimestre 2025, entregando certificados a nuestros graduados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cursos -->
+    <section id="cursos" class="section" style="background: var(--background-light);">
+        <div class="container">
+            <h2 class="section-title">Nuestros Cursos</h2>
+            <p class="section-subtitle">
+                Capacitaciones especializadas para el desarrollo personal y profesional
+            </p>
+            <div class="cards-grid">
+                <div class="card">
+                    <span class="card-icon">🚑</span>
+                    <h3>RCP y Primeros Auxilios</h3>
+                    <p>Curso intensivo desde marzo 2025. Ya hemos capacitado más de 100 alumnos en técnicas de reanimación cardiopulmonar y primeros auxilios básicos.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">☀️</span>
+                    <h3>Instalación de Paneles Solares</h3>
+                    <p>Los miércoles aprendemos instalación, mantenimiento y solución de problemas en paneles solares, electricidad básica, termos solares y energía eólica.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🏥</span>
+                    <h3>Promotor de Salud</h3>
+                    <p>Dictado por personal de Salud Penitenciaria del SPB, incluye charlas sobre ITS, consumos problemáticos y promoción del bienestar.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">⚖️</span>
+                    <h3>Proceso Penal y Ejecución</h3>
+                    <p>Orientación legal dentro del marco de ejecución de la pena en la Provincia de Buenos Aires, fundamental para la comprensión del sistema.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">👥</span>
+                    <h3>Género y Ley Micaela</h3>
+                    <p>Abordaje integral sobre violencias de género y aplicación de la Ley Micaela, promoviendo la igualdad y el respeto.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🛡️</span>
+                    <h3>Prevención de Consumos</h3>
+                    <p>Programa de prevención de consumos problemáticos dictado por psicólogos especializados de Salud Penitenciaria.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Noticias y Actividades -->
+    <section id="noticias" class="section fade-in">
+        <div class="container">
+            <h2 class="section-title">Noticias y Actividades</h2>
+            <p class="section-subtitle">
+                Mantente al día con nuestras últimas actividades y logros
+            </p>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-date">11 de Julio de 2025</div>
+                        <h3 class="news-title">🎉 Primer Aniversario de la Comunidad Educativa</h3>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Celebramos nuestro primer año de vida, coincidiendo con la entrega de certificados del primer cuatrimestre. Un hito importante en nuestra misión educativa.
+                        </p>
+                        <div class="news-tags">
+                            <span class="news-tag">Aniversario</span>
+                            <span class="news-tag">Certificados</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-date">6 de Junio de 2025</div>
+                        <h3 class="news-title">💊 Charla sobre Consumos Problemáticos</h3>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Psicólogas de Salud Penitenciaria realizaron una charla informativa sobre consumos problemáticos, diferenciando conceptos clave y estrategias de prevención.
+                        </p>
+                        <div class="news-tags">
+                            <span class="news-tag">Salud</span>
+                            <span class="news-tag">Prevención</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-date">21 de Mayo de 2025</div>
+                        <h3 class="news-title">⚡ Avances en Paneles Solares</h3>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Continuamos con las clases de instalación y mantenimiento de paneles solares, abordando temas de electricidad básica y energías renovables.
+                        </p>
+                        <div class="news-tags">
+                            <span class="news-tag">Energía Solar</span>
+                            <span class="news-tag">Tecnología</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-date">6 de Mayo de 2025</div>
+                        <h3 class="news-title">🩺 Charla sobre Prevención de ITS</h3>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            En el marco del curso de Promotor de Salud, se realizó una charla especializada sobre prevención de infecciones de transmisión sexual.
+                        </p>
+                        <div class="news-tags">
+                            <span class="news-tag">Salud Sexual</span>
+                            <span class="news-tag">Prevención</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-date">30 de Abril de 2025</div>
+                        <h3 class="news-title">🚒 Capacitación en Prevención de Incendios</h3>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Personal de bomberos del SPB brindó una charla instructiva sobre prevención de incendios, planes de evacuación y uso de extintores.
+                        </p>
+                        <div class="news-tags">
+                            <span class="news-tag">Seguridad</span>
+                            <span class="news-tag">Bomberos</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-date">Abril 2025</div>
+                        <h3 class="news-title">📚 Donación de Libros al Pabellón Literario</h3>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Realizamos una donación de libros y material de estudio al Pabellón "Literario" N°18, fortaleciendo el espíritu educativo y cultural.
+                        </p>
+                        <div class="news-tags">
+                            <span class="news-tag">Cultura</span>
+                            <span class="news-tag">Solidaridad</span>
+                        </div>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- Contacto -->
-    <section id="contacto" class="section">
+    <section id="contacto" class="section" style="background: var(--background-light);">
         <div class="container">
             <h2 class="section-title">Información de Contacto</h2>
-            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-                <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 2rem;">
-                    <h3 style="color: #2c3e50; margin-bottom: 2rem; font-size: 1.5rem;">🎓 Comunidad Educativa - Pabellón 16B</h3>
-                    <p style="color: #7f8c8d; line-height: 1.8; font-size: 1.1rem;">
-                        <strong>📍 Ubicación:</strong> Pabellón 16B - Unidad 9<br>
-                        <strong>🏢 Institución:</strong> Servicio Penitenciario Bonaerense<br><br>
-                        <strong>📝 Para inscripciones:</strong><br>
-                        Dirigirse a la Oficina de Judiciales<br><br>
-                        <strong>📚 Cursos disponibles:</strong><br>
-                        • RCP y Primeros Auxilios<br>
-                        • Instalación de Paneles Solares<br>
-                        • Promotor de Salud<br>
-                        • Proceso Penal<br>
-                        • Género y Ley Micaela<br>
-                        • Prevención de Consumos Problemáticos<br><br>
-                        <strong>🕒 Horarios:</strong> Consultar según cada curso
+            <p class="section-subtitle">
+                ¿Interesado en nuestros cursos? Aquí tienes toda la información
+            </p>
+            <div class="cards-grid">
+                <div class="card">
+                    <span class="card-icon">📍</span>
+                    <h3>Ubicación</h3>
+                    <p>
+                        <strong>Pabellón 16B - Unidad 9</strong><br>
+                        Servicio Penitenciario Bonaerense<br>
+                        La Plata, Buenos Aires
                     </p>
                 </div>
-                
-                <div style="background: linear-gradient(135deg, #27ae60, #2ecc71); color: white; padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 1rem;">✅ Sitio Web Renovado</h3>
-                    <p>Este es un sitio completamente nuevo, sin problemas de caché. La navegación funciona perfectamente en todos los dispositivos móviles y de escritorio.</p>
+                <div class="card">
+                    <span class="card-icon">📝</span>
+                    <h3>Inscripciones</h3>
+                    <p>
+                        Para inscribirte en cualquiera de nuestros cursos, dirigirse a la <strong>Oficina de Judiciales</strong>.<br>
+                        Consultar horarios según cada curso específico.
+                    </p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🔗</span>
+                    <h3>Enlaces de Interés</h3>
+                    <p>
+                        • <a href="https://www.infoleg.gob.ar/" target="_blank" rel="noopener">Infoleg - Información Legislativa</a><br>
+                        • <a href="http://www.enciclopedia-juridica.com/" target="_blank" rel="noopener">Enciclopedia Jurídica</a>
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer style="background: #2c3e50; color: white; text-align: center; padding: 3rem 0;">
+    <footer class="footer">
         <div class="container">
-            <h3 style="color: #f39c12; margin-bottom: 1rem;">🎓 Comunidad Educativa Juana Manso</h3>
-            <p style="color: #bdc3c7; margin-bottom: 2rem;">Fomentando la educación y la cultura como marco principal para la resocialización.</p>
-            <p style="color: #95a5a6; border-top: 1px solid #34495e; padding-top: 2rem;">
-                &copy; 2025 Comunidad Educativa Juana Manso - Pabellón 16B, Unidad 9. Todos los derechos reservados.<br>
-                <strong>🚀 Sitio completamente nuevo - URL renovada - Sin caché anterior</strong>
-            </p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🎓 Comunidad Educativa Juana Manso</h3>
+                    <p>
+                        Fomentando la educación y la cultura como marco principal para la resocialización. 
+                        Transformando vidas a través del conocimiento desde el Pabellón 16B.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📧</a>
+                        <a href="#" class="social-link">📞</a>
+                        <a href="#" class="social-link">📍</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Nuestros Cursos</h3>
+                    <p><a href="#cursos">RCP y Primeros Auxilios</a></p>
+                    <p><a href="#cursos">Paneles Solares</a></p>
+                    <p><a href="#cursos">Promotor de Salud</a></p>
+                    <p><a href="#cursos">Proceso Penal</a></p>
+                    <p><a href="#cursos">Género y Ley Micaela</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Información</h3>
+                    <p><a href="#sobre-nosotros">Nuestra Historia</a></p>
+                    <p><a href="#noticias">Noticias</a></p>
+                    <p><a href="#contacto">Contacto</a></p>
+                    <p><a href="#cursos">Inscripciones</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2025 Comunidad Educativa Juana Manso - Pabellón 16B, Unidad 9. Todos los derechos reservados.<br>
+                    <strong>Educación para la Resocialización | Primer Aniversario 2024-2025</strong>
+                </p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Anti-cache timestamp
-        console.log('Sitio NUEVO cargado:', new Date().toISOString());
+        // ===== FUNCIONALIDAD MODERNA Y INTERACTIVA =====
         
-        // Navegación móvil
+        // Loading Screen
+        window.addEventListener('load', () => {
+            const loading = document.getElementById('loading');
+            setTimeout(() => {
+                loading.classList.add('hidden');
+                setTimeout(() => loading.remove(), 500);
+            }, 1000);
+        });
+
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Mobile Navigation
         const menuToggle = document.getElementById('menu-toggle');
         const navLinks = document.getElementById('nav-links');
 
-        if (menuToggle && navLinks) {
-            menuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
+        menuToggle?.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+
+        // Active Navigation Highlight
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.pageYOffset >= sectionTop - 60) {
+                    current = section.getAttribute('id');
+                }
             });
 
-            // Cerrar menú al hacer click en un enlace
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth Scroll for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                
+                if (target) {
+                    const headerHeight = header.offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter Animation for Stats
+        const animateCounters = () => {
+            const counters = document.querySelectorAll('.stat-item h3');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent.replace('+', ''));
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.floor(current) + (counter.textContent.includes('+') ? '+' : '');
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        counter.textContent = target + (counter.textContent.includes('+') ? '+' : '');
+                    }
+                };
+                
+                updateCounter();
+            });
+        };
+
+        // Trigger counter animation when stats section is visible
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        statsObserver.unobserve(entry.target);
+                    }
                 });
+            });
+            
+            statsObserver.observe(statsSection);
+        }
+
+        // Card Hover Effects
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Typing Effect for Hero Title
+        const typeText = (element, text, speed = 100) => {
+            element.textContent = '';
+            let i = 0;
+            
+            const typeInterval = setInterval(() => {
+                element.textContent += text[i];
+                i++;
+                
+                if (i >= text.length) {
+                    clearInterval(typeInterval);
+                }
+            }, speed);
+        };
+
+        // Initialize typing effect after loading
+        setTimeout(() => {
+            const heroTitle = document.querySelector('.hero h1');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent;
+                typeText(heroTitle, originalText, 80);
+            }
+        }, 1500);
+
+        // Parallax Effect for Hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            
+            if (hero && scrolled < hero.offsetHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Easter Egg - Console Message
+        console.log(`
+        🎓 Comunidad Educativa Juana Manso
+        ═══════════════════════════════════
+        
+        ¡Gracias por visitar nuestro sitio!
+        
+        📅 Celebrando nuestro primer aniversario
+        📍 Pabellón 16B - Unidad 9
+        🎯 Educación para la resocialización
+        
+        Sitio desarrollado con ❤️ 
+        Cargado: ${new Date().toLocaleString('es-AR')}
+        `);
+
+        // Performance Monitoring
+        window.addEventListener('load', () => {
+            const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+            console.log(`⚡ Sitio cargado en ${loadTime}ms`);
+        });
+
+        // Form Interactions (if needed in future)
+        const handleFormSubmit = (event) => {
+            event.preventDefault();
+            // Future form handling logic
+            alert('¡Gracias por tu interés! Nos pondremos en contacto contigo pronto.');
+        };
+
+        // Keyboard Navigation Support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+
+        // Print Styles Support
+        window.addEventListener('beforeprint', () => {
+            document.body.classList.add('printing');
+        });
+
+        window.addEventListener('afterprint', () => {
+            document.body.classList.remove('printing');
+        });
+
+        // Accessibility Improvements
+        document.querySelectorAll('a, button').forEach(element => {
+            if (!element.getAttribute('aria-label') && !element.textContent.trim()) {
+                element.setAttribute('aria-label', 'Enlace o botón');
+            }
+        });
+
+        // Dynamic Year Update
+        const currentYear = new Date().getFullYear();
+        document.querySelectorAll('.current-year').forEach(el => {
+            el.textContent = currentYear;
+        });
+
+        // Service Worker Registration (for future PWA)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // navigator.serviceWorker.register('/sw.js')
+                //     .then(registration => console.log('SW registered'))
+                //     .catch(registrationError => console.log('SW registration failed'));
             });
         }
 
-        // Remover avisos después de tiempo
-        setTimeout(() => {
-            const aviso = document.querySelector('.sitio-nuevo-aviso');
-            if (aviso) {
-                aviso.style.animation = 'none';
-                aviso.style.opacity = '0';
-                setTimeout(() => aviso.remove(), 300);
-            }
-        }, 15000);
-
-        setTimeout(() => {
-            const banner = document.querySelector('.nuevo-sitio-banner');
-            if (banner) {
-                banner.style.animation = 'none';
-                banner.style.opacity = '0';
-                setTimeout(() => banner.remove(), 500);
-            }
-        }, 20000);
+        // Initialize all interactive features
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add any initialization code here
+            console.log('🚀 Comunidad Educativa Juana Manso - Sitio cargado correctamente');
+        });
     </script>
 </body>
 </html>

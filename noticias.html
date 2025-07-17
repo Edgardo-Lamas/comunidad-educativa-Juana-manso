@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias - Comunidad Educativa Juana Manso</title>
+    <meta name="description" content="Últimas noticias y eventos de la Comunidad Educativa Juana Manso. Mantente informado sobre nuestras actividades y logros.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="./" class="logo">
+                <span class="emoji">🎓</span>
+                <span>Comunidad Educativa Juana Manso</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="./">Inicio</a></li>
+                <li><a href="historia.html">Nuestra Historia</a></li>
+                <li><a href="cursos.html">Cursos</a></li>
+                <li><a href="noticias.html" class="active">Noticias</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ol>
+                <li><a href="./">Inicio</a></li>
+                <li>></li>
+                <li>Noticias</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Hero Interno -->
+    <section class="hero-interno">
+        <div class="container">
+            <h1>Noticias y Eventos</h1>
+            <p>Mantente informado sobre nuestras actividades y logros recientes</p>
+        </div>
+    </section>
+
+    <!-- Noticia Destacada -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Destacado</h2>
+            
+            <div class="news-grid" style="margin-bottom: 4rem;">
+                <article class="news-card" style="grid-column: 1 / -1;">
+                    <div class="news-header" style="background: linear-gradient(135deg, #f39c12, #e67e22);">
+                        <div class="news-date">25 de Enero 2025 | DESTACADO</div>
+                        <h3 class="news-title">🎊 Celebramos Nuestro Primer Aniversario</h3>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            <strong>Un año transformando vidas a través de la educación.</strong> La Comunidad Educativa Juana Manso 
+                            celebra su primer aniversario con logros extraordinarios: más de 100 personas capacitadas en RCP, 
+                            6 programas educativos activos y un impacto real en la resocialización del Pabellón 16B.
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            Durante este año hemos demostrado que <em>"la educación y la cultura son el marco principal para la resocialización"</em>. 
+                            Nuestros programas han superado todas las expectativas, consolidándose como referente en educación penitenciaria.
+                        </p>
+                        <div class="news-tags">
+                            <span class="news-tag">Aniversario</span>
+                            <span class="news-tag">100+ Capacitados</span>
+                            <span class="news-tag">Logros</span>
+                            <span class="news-tag">Educación</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Noticias Recientes -->
+    <section class="section" style="background: var(--background-light);">
+        <div class="container">
+            <h2 class="section-title">Noticias Recientes</h2>
+            <p class="section-subtitle">
+                Las últimas novedades de nuestra comunidad educativa
+            </p>
+            
+            <div class="news-grid">
+                <!-- Noticia 1 -->
+                <article class="news-card">
+                    <div class="news-header" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">
+                        <div class="news-date">14 de Enero 2025</div>
+                        <h3 class="news-title">🚑 Décima Clase de RCP Completada</h3>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Se completó exitosamente la décima clase del programa de RCP y Primeros Auxilios en el SUM del Pabellón 16B. 
+                            Más de 20 nuevos participantes adquirieron habilidades vitales para situaciones de emergencia.
+                        </p>
+                        <div class="news-tags">
+                            <span class="news-tag">RCP</span>
+                            <span class="news-tag">Primeros Auxilios</span>
+                            <span class="news-tag">Capacitación</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Noticia 2 -->
+                <article class="news-card">
+                    <div class="news-header" style="background: linear-gradient(135deg, #f39c12, #e67e22);">
+                        <div class="news-date">08 de Enero 2025</div>
+                        <h3 class="news-title">☀️ Nuevo Ciclo de Paneles Solares</h3>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Inicia el nuevo ciclo del curso de Instalación de Paneles Solares. Los participantes aprenderán técnicas 
+                            avanzadas de instalación, mantenimiento y solución de problemas en sistemas de energía renovable.
+                        </p>
+                        <div class="news-tags">
+                            <span class="news-tag">Energía Solar</span>
+                            <span class="news-tag">Sustentabilidad</span>
+                            <span class="news-tag">Técnico</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Noticia 3 -->
+                <article class="news-card">
+                    <div class="news-header" style="background: linear-gradient(135deg, #27ae60, #229954);">
+                        <div class="news-date">02 de Enero 2025</div>
+                        <h3 class="news-title">🎓 Entrega de Certificados</h3>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Ceremonia especial de entrega de certificados a los graduados de diciembre. 
+                            15 personas recibieron sus acreditaciones en RCP, Promotor de Salud y Paneles Solares.
+                        </p>
+                        <div class="news-tags">
+                            <span class="news-tag">Certificados</span>
+                            <span class="news-tag">Graduación</span>
+                            <span class="news-tag">Logros</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Noticia 4 -->
+                <article class="news-card">
+                    <div class="news-header" style="background: linear-gradient(135deg, #8e44ad, #7d3c98);">
+                        <div class="news-date">28 de Diciembre 2024</div>
+                        <h3 class="news-title">👥 Taller de Ley Micaela</h3>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Se realizó un taller especial sobre violencia de género y aplicación de la Ley Micaela. 
+                            La actividad contó con gran participación y excelente recepción por parte de los asistentes.
+                        </p>
+                        <div class="news-tags">
+                            <span class="news-tag">Ley Micaela</span>
+                            <span class="news-tag">Género</span>
+                            <span class="news-tag">Prevención</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Noticia 5 -->
+                <article class="news-card">
+                    <div class="news-header" style="background: linear-gradient(135deg, #3498db, #2980b9);">
+                        <div class="news-date">20 de Diciembre 2024</div>
+                        <h3 class="news-title">🏥 Charla de Salud Mental</h3>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Los psicólogos de Salud Penitenciaria dictaron una charla especial sobre bienestar mental y manejo del estrés. 
+                            Parte del programa integral de Prevención de Consumos Problemáticos.
+                        </p>
+                        <div class="news-tags">
+                            <span class="news-tag">Salud Mental</span>
+                            <span class="news-tag">SPB</span>
+                            <span class="news-tag">Bienestar</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Noticia 6 -->
+                <article class="news-card">
+                    <div class="news-header" style="background: linear-gradient(135deg, #16a085, #138d75);">
+                        <div class="news-date">15 de Diciembre 2024</div>
+                        <h3 class="news-title">⚖️ Seminario Legal</h3>
+                    </div>
+                    <div class="news-content">
+                        <p class="news-excerpt">
+                            Se desarrolló un seminario sobre Proceso Penal y Ejecución de la Pena en la Provincia de Buenos Aires. 
+                            Los participantes profundizaron en aspectos legales fundamentales.
+                        </p>
+                        <div class="news-tags">
+                            <span class="news-tag">Derecho</span>
+                            <span class="news-tag">Proceso Penal</span>
+                            <span class="news-tag">Educación Legal</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Próximos Eventos -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Próximos Eventos</h2>
+            <p class="section-subtitle">
+                Actividades programadas para los próximos meses
+            </p>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <span class="card-icon">🚑</span>
+                    <h3>Continuidad RCP</h3>
+                    <p><strong>Febrero 2025</strong><br>
+                    Continúan las clases de RCP y Primeros Auxilios en el SUM. Nuevos horarios y cupos disponibles para quienes deseen sumarse.</p>
+                    <div class="news-tags" style="margin-top: 1rem;">
+                        <span class="news-tag">Permanente</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="card-icon">🌱</span>
+                    <h3>Taller de Huerta</h3>
+                    <p><strong>Marzo 2025</strong><br>
+                    Nuevo programa piloto de huerta sustentable. Aprendizaje sobre cultivo de alimentos y cuidado del medio ambiente.</p>
+                    <div class="news-tags" style="margin-top: 1rem;">
+                        <span class="news-tag">Nuevo</span>
+                        <span class="news-tag">Sustentabilidad</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="card-icon">💻</span>
+                    <h3>Alfabetización Digital</h3>
+                    <p><strong>Abril 2025</strong><br>
+                    Programa de capacitación en herramientas digitales básicas y uso responsable de tecnologías de la información.</p>
+                    <div class="news-tags" style="margin-top: 1rem;">
+                        <span class="news-tag">Tecnología</span>
+                        <span class="news-tag">Planificado</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="card-icon">📚</span>
+                    <h3>Club de Lectura</h3>
+                    <p><strong>Mayo 2025</strong><br>
+                    Espacio de encuentro literario y análisis de textos. Fomento de la lectura como herramienta de crecimiento personal.</p>
+                    <div class="news-tags" style="margin-top: 1rem;">
+                        <span class="news-tag">Literatura</span>
+                        <span class="news-tag">Cultura</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="card-icon">🎨</span>
+                    <h3>Taller de Arte</h3>
+                    <p><strong>Junio 2025</strong><br>
+                    Actividades artísticas y expresión creativa como complemento a los programas educativos tradicionales.</p>
+                    <div class="news-tags" style="margin-top: 1rem;">
+                        <span class="news-tag">Arte</span>
+                        <span class="news-tag">Creatividad</span>
+                    </div>
+                </div>
+
+                <div class="card" style="border: 2px solid var(--primary-color);">
+                    <span class="card-icon">🎉</span>
+                    <h3>2° Aniversario</h3>
+                    <p><strong>2026</strong><br>
+                    Celebración del segundo aniversario con exposición de trabajos, reconocimientos y presentación de nuevos proyectos.</p>
+                    <div class="news-tags" style="margin-top: 1rem;">
+                        <span class="news-tag">Celebración</span>
+                        <span class="news-tag">Futuro</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Archivo de Noticias -->
+    <section class="section" style="background: var(--background-light);">
+        <div class="container">
+            <h2 class="section-title">Archivo 2024</h2>
+            <p class="section-subtitle">
+                Revive los momentos más importantes de nuestro primer año
+            </p>
+            
+            <div class="timeline" style="max-width: 900px; margin: 0 auto;">
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span class="timeline-year">Dic</span>
+                        <span class="timeline-month">2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>🎄 Cierre de Año Exitoso</h3>
+                        <p>Culminación del primer año con balance positivo: programas consolidados, comunidad fortalecida y objetivos superados.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span class="timeline-year">Nov</span>
+                        <span class="timeline-month">2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>📊 Evaluación de Programas</h3>
+                        <p>Revisión integral de todos los cursos y programas. Análisis de resultados y planificación de mejoras para 2025.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span class="timeline-year">Oct</span>
+                        <span class="timeline-month">2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>🏆 Reconocimiento Institucional</h3>
+                        <p>La comunidad recibe reconocimiento por su contribución al proceso de resocialización y educación penitenciaria.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span class="timeline-year">Sep</span>
+                        <span class="timeline-month">2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>🌟 Expansión de Programas</h3>
+                        <p>Incorporación de nuevos cursos especializados: Género, Proceso Penal y Prevención de Consumos.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span class="timeline-year">Ago</span>
+                        <span class="timeline-month">2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>📈 Crecimiento Sostenido</h3>
+                        <p>Se registra el crecimiento más significativo en participación y diversidad de programas educativos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🎓 Comunidad Educativa Juana Manso</h3>
+                    <p>
+                        Fomentando la educación y la cultura como marco principal para la resocialización. 
+                        Transformando vidas a través del conocimiento desde el Pabellón 16B.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Email">📧</a>
+                        <a href="#" class="social-link" aria-label="Teléfono">📞</a>
+                        <a href="#" class="social-link" aria-label="Ubicación">📍</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Últimas Noticias</h3>
+                    <p><a href="#aniversario">Primer Aniversario</a></p>
+                    <p><a href="#rcp">Décima Clase RCP</a></p>
+                    <p><a href="#eventos">Próximos Eventos</a></p>
+                    <p><a href="#archivo">Archivo 2024</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navegación</h3>
+                    <p><a href="./">Inicio</a></p>
+                    <p><a href="historia.html">Nuestra Historia</a></p>
+                    <p><a href="cursos.html">Cursos</a></p>
+                    <p><a href="contacto.html">Contacto</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span class="current-year">2025</span> Comunidad Educativa Juana Manso - Pabellón 16B, Unidad 9. Todos los derechos reservados.<br>
+                    <strong>Educación para la Resocialización | Primer Aniversario 2024-2025</strong>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

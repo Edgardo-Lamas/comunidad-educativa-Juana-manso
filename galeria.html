@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería - Comunidad Educativa Juana Manso</title>
+    <meta name="description" content="Galería de fotos y videos de la Comunidad Educativa Juana Manso. Momentos destacados de nuestros cursos y actividades.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="./" class="logo">
+                <span class="emoji">🎓</span>
+                <span>Comunidad Educativa Juana Manso</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="./">Inicio</a></li>
+                <li><a href="historia.html">Nuestra Historia</a></li>
+                <li><a href="cursos.html">Cursos</a></li>
+                <li><a href="noticias.html">Noticias</a></li>
+                <li><a href="galeria.html" class="active">Galería</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ol>
+                <li><a href="./">Inicio</a></li>
+                <li>></li>
+                <li>Galería</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Hero Interno -->
+    <section class="hero-interno">
+        <div class="container">
+            <h1>Galería Multimedia</h1>
+            <p>Momentos destacados de nuestras actividades educativas y culturales</p>
+        </div>
+    </section>
+
+    <!-- Filtros de Galería -->
+    <section class="section" style="padding-top: 2rem; padding-bottom: 1rem;">
+        <div class="container">
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">Todas</button>
+                <button class="filter-btn" data-filter="rcp">RCP</button>
+                <button class="filter-btn" data-filter="paneles">Paneles Solares</button>
+                <button class="filter-btn" data-filter="salud">Promotor Salud</button>
+                <button class="filter-btn" data-filter="legal">Proceso Penal</button>
+                <button class="filter-btn" data-filter="genero">Género</button>
+                <button class="filter-btn" data-filter="eventos">Eventos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería Principal -->
+    <section class="section" style="padding-top: 1rem;">
+        <div class="container">
+            <!-- Galería RCP -->
+            <div class="gallery-section" id="rcp-section">
+                <h2 class="section-title">🚑 RCP y Primeros Auxilios</h2>
+                <p class="section-subtitle">Nuestro programa estrella con más de 100 alumnos capacitados</p>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item large" data-category="rcp">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">🚑</span>
+                            <h3>Práctica de RCP</h3>
+                            <p>Clase práctica en el SUM del Pabellón 16B</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="rcp">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">❤️</span>
+                            <h3>Técnicas Cardíacas</h3>
+                            <p>Aprendiendo reanimación</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="rcp">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">🏥</span>
+                            <h3>Primeros Auxilios</h3>
+                            <p>Vendajes y atención básica</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="rcp">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">👨‍⚕️</span>
+                            <h3>Instructor Capacitando</h3>
+                            <p>Demostración de técnicas</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="rcp">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">👥</span>
+                            <h3>Grupo de Alumnos</h3>
+                            <p>Participantes atentos</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="rcp">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">📋</span>
+                            <h3>Evaluación Práctica</h3>
+                            <p>Demostrando lo aprendido</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Galería Paneles Solares -->
+            <div class="gallery-section" id="paneles-section" style="margin-top: 4rem;">
+                <h2 class="section-title">☀️ Instalación de Paneles Solares</h2>
+                <p class="section-subtitle">Capacitación técnica en energías renovables</p>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="paneles">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">☀️</span>
+                            <h3>Panel Solar</h3>
+                            <p>Instalación práctica</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item large" data-category="paneles">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">🔧</span>
+                            <h3>Trabajo Técnico</h3>
+                            <p>Alumnos en clase práctica de miércoles</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="paneles">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">⚡</span>
+                            <h3>Electricidad Básica</h3>
+                            <p>Fundamentos eléctricos</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="paneles">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">🌱</span>
+                            <h3>Energía Limpia</h3>
+                            <p>Sustentabilidad ambiental</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="paneles">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">🛠️</span>
+                            <h3>Herramientas</h3>
+                            <p>Equipamiento técnico</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Galería Promotor de Salud -->
+            <div class="gallery-section" id="salud-section" style="margin-top: 4rem;">
+                <h2 class="section-title">🏥 Promotor de Salud</h2>
+                <p class="section-subtitle">Charlas y capacitaciones con personal del SPB</p>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="salud">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">🏥</span>
+                            <h3>Biblioteca 16B</h3>
+                            <p>Lugar de encuentro</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="salud">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">👩‍⚕️</span>
+                            <h3>Personal SPB</h3>
+                            <p>Profesionales de salud</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item large" data-category="salud">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">💊</span>
+                            <h3>Charla sobre ITS</h3>
+                            <p>Prevención y cuidado desde abril 2025</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="salud">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">🧠</span>
+                            <h3>Salud Mental</h3>
+                            <p>Bienestar integral</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="salud">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">📚</span>
+                            <h3>Material Educativo</h3>
+                            <p>Recursos informativos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Galería Eventos Especiales -->
+            <div class="gallery-section" id="eventos-section" style="margin-top: 4rem;">
+                <h2 class="section-title">🎉 Eventos Especiales</h2>
+                <p class="section-subtitle">Celebraciones y momentos destacados de nuestra comunidad</p>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item large" data-category="eventos">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">🎊</span>
+                            <h3>Primer Aniversario</h3>
+                            <p>Celebración del primer año - Enero 2025</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="eventos">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">🎓</span>
+                            <h3>Entrega Certificados</h3>
+                            <p>Graduación diciembre</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="eventos">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">📸</span>
+                            <h3>Fotos Grupales</h3>
+                            <p>Recuerdos especiales</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="eventos">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">🏆</span>
+                            <h3>Reconocimientos</h3>
+                            <p>Logros destacados</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="eventos">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">🎈</span>
+                            <h3>Actividades Especiales</h3>
+                            <p>Momentos de alegría</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="eventos">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">🌟</span>
+                            <h3>Hitos Importantes</h3>
+                            <p>Fechas memorables</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Galería Otros Cursos -->
+            <div class="gallery-section" id="otros-section" style="margin-top: 4rem;">
+                <h2 class="section-title">📚 Otros Programas Educativos</h2>
+                <p class="section-subtitle">Género, Proceso Penal y Prevención de Consumos</p>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="genero">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">👥</span>
+                            <h3>Taller de Género</h3>
+                            <p>Ley Micaela</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="legal">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">⚖️</span>
+                            <h3>Clase Legal</h3>
+                            <p>Proceso Penal Buenos Aires</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="genero">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">🛡️</span>
+                            <h3>Prevención Violencia</h3>
+                            <p>Educación preventiva</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="legal">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">📖</span>
+                            <h3>Material Jurídico</h3>
+                            <p>Textos legales</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item large" data-category="genero">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">💜</span>
+                            <h3>Taller Integral</h3>
+                            <p>Violencias y género - Abril 2025</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="legal">
+                        <div class="gallery-placeholder">
+                            <span class="gallery-icon">👨‍💼</span>
+                            <h3>Instructor Legal</h3>
+                            <p>Especialista en derecho</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Videos -->
+    <section class="section" style="background: var(--background-light);">
+        <div class="container">
+            <h2 class="section-title">🎬 Videos Destacados</h2>
+            <p class="section-subtitle">
+                Contenido audiovisual de nuestras actividades educativas
+            </p>
+            
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <span class="video-icon">▶️</span>
+                        <h3>Demostración RCP</h3>
+                        <p>Tutorial completo de reanimación cardiopulmonar básica</p>
+                        <div class="video-info">
+                            <span>📅 Marzo 2025</span>
+                            <span>⏱️ 15:30 min</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <span class="video-icon">▶️</span>
+                        <h3>Instalación Panel Solar</h3>
+                        <p>Proceso paso a paso de instalación de sistemas solares</p>
+                        <div class="video-info">
+                            <span>📅 Enero 2025</span>
+                            <span>⏱️ 22:15 min</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <span class="video-icon">▶️</span>
+                        <h3>Testimonios Alumnos</h3>
+                        <p>Experiencias de participantes en nuestros programas</p>
+                        <div class="video-info">
+                            <span>📅 Diciembre 2024</span>
+                            <span>⏱️ 8:45 min</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <span class="video-icon">▶️</span>
+                        <h3>Primer Aniversario</h3>
+                        <p>Resumen del primer año de la comunidad educativa</p>
+                        <div class="video-info">
+                            <span>📅 Enero 2025</span>
+                            <span>⏱️ 12:00 min</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <p style="color: var(--text-light); font-style: italic;">
+                    📹 Próximamente estaremos añadiendo más contenido audiovisual de nuestras actividades
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <h2 class="section-title">¿Quieres Ser Parte?</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                    Únete a nuestra comunidad educativa y forma parte de estas experiencias transformadoras
+                </p>
+                <a href="contacto.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                    Conoce Cómo Inscribirte
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🎓 Comunidad Educativa Juana Manso</h3>
+                    <p>
+                        Fomentando la educación y la cultura como marco principal para la resocialización. 
+                        Transformando vidas a través del conocimiento desde el Pabellón 16B.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Email">📧</a>
+                        <a href="#" class="social-link" aria-label="Teléfono">📞</a>
+                        <a href="#" class="social-link" aria-label="Ubicación">📍</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Galería</h3>
+                    <p><a href="#rcp-section">RCP y Primeros Auxilios</a></p>
+                    <p><a href="#paneles-section">Paneles Solares</a></p>
+                    <p><a href="#salud-section">Promotor de Salud</a></p>
+                    <p><a href="#eventos-section">Eventos Especiales</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navegación</h3>
+                    <p><a href="./">Inicio</a></p>
+                    <p><a href="historia.html">Nuestra Historia</a></p>
+                    <p><a href="cursos.html">Cursos</a></p>
+                    <p><a href="contacto.html">Contacto</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span class="current-year">2025</span> Comunidad Educativa Juana Manso - Pabellón 16B, Unidad 9. Todos los derechos reservados.<br>
+                    <strong>Educación para la Resocialización | Primer Aniversario 2024-2025</strong>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
