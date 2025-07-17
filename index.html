@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidad Educativa - Pabellón 16B | Sitio Completamente Nuevo</title>
+    <meta name="description" content="Sitio completamente renovado de la Comunidad Educativa del Pabellón 16B - Unidad 9">
+    <!-- Anti-cache headers más agresivos -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        /* ===== RESET Y BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #f39c12;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s;
+            font-weight: 600;
+            margin: 0 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(243, 156, 18, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* ===== SECCIONES ===== */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #f39c12, #e67e22);
+            border-radius: 2px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(102, 126, 234, 0.95);
+                flex-direction: column;
+                padding: 2rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* ===== SMOOTH SCROLL ===== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ===== AVISO SITIO NUEVO ===== */
+        .sitio-nuevo-aviso {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            background: #e74c3c;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            z-index: 9999;
+            animation: bounce 1s infinite;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* Efecto especial para indicar que es nuevo */
+        .nuevo-sitio-banner {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-weight: bold;
+            font-size: 16px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 5px #ff6b6b; }
+            to { box-shadow: 0 0 20px #ff6b6b, 0 0 30px #ff6b6b; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner indicando sitio nuevo -->
+    <div class="nuevo-sitio-banner">
+        🚀 SITIO COMPLETAMENTE NUEVO - SIN CACHE ANTIGUO 🚀
+    </div>
+
+    <!-- Aviso flotante -->
+    <div class="sitio-nuevo-aviso">
+        ✨ NUEVA URL - SIN CACHE
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">
+                🎓 Comunidad Educativa P16B
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#noticias">Noticias</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Comunidad Educativa</h1>
+                <h2>Pabellón 16B - Unidad 9</h2>
+                <p>🎉 SITIO COMPLETAMENTE NUEVO 🎉<br>
+                Fomentando la educación y la cultura como marco principal para la resocialización, ofreciendo cursos y capacitaciones para el desarrollo personal y profesional.</p>
+                <a href="#contacto" class="btn">Contactar</a>
+                <a href="#contacto" class="btn btn-outline">Información</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="section">
+        <div class="container">
+            <h2 class="section-title">Información de Contacto</h2>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+                    <h3 style="color: #2c3e50; margin-bottom: 2rem; font-size: 1.5rem;">🎓 Comunidad Educativa - Pabellón 16B</h3>
+                    <p style="color: #7f8c8d; line-height: 1.8; font-size: 1.1rem;">
+                        <strong>📍 Ubicación:</strong> Pabellón 16B - Unidad 9<br>
+                        <strong>🏢 Institución:</strong> Servicio Penitenciario Bonaerense<br><br>
+                        <strong>📝 Para inscripciones:</strong><br>
+                        Dirigirse a la Oficina de Judiciales<br><br>
+                        <strong>📚 Cursos disponibles:</strong><br>
+                        • RCP y Primeros Auxilios<br>
+                        • Instalación de Paneles Solares<br>
+                        • Promotor de Salud<br>
+                        • Proceso Penal<br>
+                        • Género y Ley Micaela<br>
+                        • Prevención de Consumos Problemáticos<br><br>
+                        <strong>🕒 Horarios:</strong> Consultar según cada curso
+                    </p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #27ae60, #2ecc71); color: white; padding: 2rem; border-radius: 15px; margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">✅ Sitio Web Renovado</h3>
+                    <p>Este es un sitio completamente nuevo, sin problemas de caché. La navegación funciona perfectamente en todos los dispositivos móviles y de escritorio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #2c3e50; color: white; text-align: center; padding: 3rem 0;">
+        <div class="container">
+            <h3 style="color: #f39c12; margin-bottom: 1rem;">🎓 Comunidad Educativa</h3>
+            <p style="color: #bdc3c7; margin-bottom: 2rem;">Fomentando la educación y la cultura como marco principal para la resocialización.</p>
+            <p style="color: #95a5a6; border-top: 1px solid #34495e; padding-top: 2rem;">
+                &copy; 2025 Comunidad Educativa - Pabellón 16B, Unidad 9. Todos los derechos reservados.<br>
+                <strong>🚀 Sitio completamente nuevo - URL renovada - Sin caché anterior</strong>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Anti-cache timestamp
+        console.log('Sitio NUEVO cargado:', new Date().toISOString());
+        
+        // Navegación móvil
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Cerrar menú al hacer click en un enlace
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+
+        // Remover avisos después de tiempo
+        setTimeout(() => {
+            const aviso = document.querySelector('.sitio-nuevo-aviso');
+            if (aviso) {
+                aviso.style.animation = 'none';
+                aviso.style.opacity = '0';
+                setTimeout(() => aviso.remove(), 300);
+            }
+        }, 15000);
+
+        setTimeout(() => {
+            const banner = document.querySelector('.nuevo-sitio-banner');
+            if (banner) {
+                banner.style.animation = 'none';
+                banner.style.opacity = '0';
+                setTimeout(() => banner.remove(), 500);
+            }
+        }, 20000);
+    </script>
+</body>
+</html>
