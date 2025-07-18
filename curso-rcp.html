@@ -613,206 +613,212 @@
             startAutoplay();
             
             console.log('✅ Carrusel RCP funcionando!');
-        });
-        
-        // LIGHTBOX AVANZADO CON NAVEGACIÓN
-        let currentLightboxIndex = 0;
-        const lightboxImages = Array.from(slides).map(slide => {
-            const img = slide.querySelector('img');
-            return {
-                src: img.src,
-                alt: img.alt
-            };
-        });
-        
-        function openLightbox(src, alt) {
-            // Encontrar el índice de la imagen actual
-            currentLightboxIndex = lightboxImages.findIndex(img => img.src === src);
             
-            const lightbox = document.createElement('div');
-            lightbox.className = 'lightbox-overlay';
-            lightbox.innerHTML = `
-                <div class="lightbox-content">
-                    <img src="${src}" alt="${alt}" class="lightbox-image">
-                    <button class="lightbox-close">✕</button>
-                    <button class="lightbox-prev">❮</button>
-                    <button class="lightbox-next">❯</button>
-                    <div class="lightbox-counter">
-                        <span class="lightbox-current">${currentLightboxIndex + 1}</span> / <span class="lightbox-total">${lightboxImages.length}</span>
+            // LIGHTBOX AVANZADO CON NAVEGACIÓN - MOVIDO DENTRO DEL SCOPE
+            let currentLightboxIndex = 0;
+            const lightboxImages = Array.from(slides).map(slide => {
+                const img = slide.querySelector('img');
+                return {
+                    src: img.src,
+                    alt: img.alt
+                };
+            });
+            
+            function openLightbox(src, alt) {
+                // Encontrar el índice de la imagen actual
+                currentLightboxIndex = lightboxImages.findIndex(img => img.src === src);
+                
+                const lightbox = document.createElement('div');
+                lightbox.className = 'lightbox-overlay';
+                lightbox.innerHTML = `
+                    <div class="lightbox-content">
+                        <img src="${src}" alt="${alt}" class="lightbox-image">
+                        <button class="lightbox-close">✕</button>
+                        <button class="lightbox-prev">❮</button>
+                        <button class="lightbox-next">❯</button>
+                        <div class="lightbox-counter">
+                            <span class="lightbox-current">${currentLightboxIndex + 1}</span> / <span class="lightbox-total">${lightboxImages.length}</span>
+                        </div>
                     </div>
-                </div>
-            `;
-            
-            // Estilos del lightbox
-            lightbox.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.95);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 1000;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            `;
-            
-            const content = lightbox.querySelector('.lightbox-content');
-            content.style.cssText = `
-                position: relative;
-                max-width: 90%;
-                max-height: 90%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            `;
-            
-            const img = lightbox.querySelector('.lightbox-image');
-            img.style.cssText = `
-                max-width: 100%;
-                max-height: 100%;
-                object-fit: contain;
-                border-radius: 10px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            `;
-            
-            const closeBtn = lightbox.querySelector('.lightbox-close');
-            closeBtn.style.cssText = `
-                position: absolute;
-                top: -50px;
-                right: -50px;
-                background: rgba(255,255,255,0.9);
-                border: none;
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                cursor: pointer;
-                font-size: 20px;
-                color: #333;
-                font-weight: bold;
-                transition: all 0.3s ease;
-                z-index: 1001;
-            `;
-            
-            const prevBtn = lightbox.querySelector('.lightbox-prev');
-            prevBtn.style.cssText = `
-                position: absolute;
-                left: -60px;
-                top: 50%;
-                transform: translateY(-50%);
-                background: rgba(255,255,255,0.9);
-                border: none;
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                cursor: pointer;
-                font-size: 24px;
-                color: #333;
-                font-weight: bold;
-                transition: all 0.3s ease;
-                z-index: 1001;
-            `;
-            
-            const nextBtn = lightbox.querySelector('.lightbox-next');
-            nextBtn.style.cssText = `
-                position: absolute;
-                right: -60px;
-                top: 50%;
-                transform: translateY(-50%);
-                background: rgba(255,255,255,0.9);
-                border: none;
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                cursor: pointer;
-                font-size: 24px;
-                color: #333;
-                font-weight: bold;
-                transition: all 0.3s ease;
-                z-index: 1001;
-            `;
-            
-            const counter = lightbox.querySelector('.lightbox-counter');
-            counter.style.cssText = `
-                position: absolute;
-                bottom: -50px;
-                left: 50%;
-                transform: translateX(-50%);
-                background: rgba(255,255,255,0.9);
-                padding: 10px 20px;
-                border-radius: 20px;
-                font-size: 14px;
-                color: #333;
-                font-weight: bold;
-            `;
-            
-            // Eventos
-            closeBtn.addEventListener('click', () => closeLightbox(lightbox));
-            prevBtn.addEventListener('click', () => navigateLightbox(lightbox, -1));
-            nextBtn.addEventListener('click', () => navigateLightbox(lightbox, 1));
-            
-            // Cerrar con click en fondo
-            lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) closeLightbox(lightbox);
-            });
-            
-            // Navegación con teclado
-            const keyHandler = (e) => {
-                if (e.key === 'Escape') closeLightbox(lightbox);
-                if (e.key === 'ArrowLeft') navigateLightbox(lightbox, -1);
-                if (e.key === 'ArrowRight') navigateLightbox(lightbox, 1);
-            };
-            document.addEventListener('keydown', keyHandler);
-            lightbox.keyHandler = keyHandler;
-            
-            // Hover effects
-            [closeBtn, prevBtn, nextBtn].forEach(btn => {
-                btn.addEventListener('mouseenter', () => {
-                    btn.style.background = 'white';
-                    btn.style.transform = btn === prevBtn || btn === nextBtn ? 'translateY(-50%) scale(1.1)' : 'scale(1.1)';
+                `;
+                
+                // Estilos del lightbox
+                lightbox.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.95);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 1000;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                `;
+                
+                const content = lightbox.querySelector('.lightbox-content');
+                content.style.cssText = `
+                    position: relative;
+                    max-width: 90%;
+                    max-height: 90%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                `;
+                
+                const img = lightbox.querySelector('.lightbox-image');
+                img.style.cssText = `
+                    max-width: 100%;
+                    max-height: 100%;
+                    object-fit: contain;
+                    border-radius: 10px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                `;
+                
+                const closeBtn = lightbox.querySelector('.lightbox-close');
+                closeBtn.style.cssText = `
+                    position: absolute;
+                    top: -50px;
+                    right: -50px;
+                    background: rgba(255,255,255,0.9);
+                    border: none;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    font-size: 20px;
+                    color: #333;
+                    font-weight: bold;
+                    transition: all 0.3s ease;
+                    z-index: 1001;
+                `;
+                
+                const prevBtn = lightbox.querySelector('.lightbox-prev');
+                prevBtn.style.cssText = `
+                    position: absolute;
+                    left: -60px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: rgba(255,255,255,0.9);
+                    border: none;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    font-size: 24px;
+                    color: #333;
+                    font-weight: bold;
+                    transition: all 0.3s ease;
+                    z-index: 1001;
+                `;
+                
+                const nextBtn = lightbox.querySelector('.lightbox-next');
+                nextBtn.style.cssText = `
+                    position: absolute;
+                    right: -60px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: rgba(255,255,255,0.9);
+                    border: none;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    font-size: 24px;
+                    color: #333;
+                    font-weight: bold;
+                    transition: all 0.3s ease;
+                    z-index: 1001;
+                `;
+                
+                const counter = lightbox.querySelector('.lightbox-counter');
+                counter.style.cssText = `
+                    position: absolute;
+                    bottom: -50px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: rgba(255,255,255,0.9);
+                    padding: 10px 20px;
+                    border-radius: 20px;
+                    font-size: 14px;
+                    color: #333;
+                    font-weight: bold;
+                `;
+                
+                // Eventos
+                closeBtn.addEventListener('click', () => closeLightbox(lightbox));
+                prevBtn.addEventListener('click', () => navigateLightbox(lightbox, -1));
+                nextBtn.addEventListener('click', () => navigateLightbox(lightbox, 1));
+                
+                // Cerrar con click en fondo
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox) closeLightbox(lightbox);
                 });
-                btn.addEventListener('mouseleave', () => {
-                    btn.style.background = 'rgba(255,255,255,0.9)';
-                    btn.style.transform = btn === prevBtn || btn === nextBtn ? 'translateY(-50%) scale(1)' : 'scale(1)';
+                
+                // Navegación con teclado
+                const keyHandler = (e) => {
+                    if (e.key === 'Escape') closeLightbox(lightbox);
+                    if (e.key === 'ArrowLeft') navigateLightbox(lightbox, -1);
+                    if (e.key === 'ArrowRight') navigateLightbox(lightbox, 1);
+                };
+                document.addEventListener('keydown', keyHandler);
+                lightbox.keyHandler = keyHandler;
+                
+                // Hover effects
+                [closeBtn, prevBtn, nextBtn].forEach(btn => {
+                    btn.addEventListener('mouseenter', () => {
+                        btn.style.background = 'white';
+                        btn.style.transform = btn === prevBtn || btn === nextBtn ? 'translateY(-50%) scale(1.1)' : 'scale(1.1)';
+                    });
+                    btn.addEventListener('mouseleave', () => {
+                        btn.style.background = 'rgba(255,255,255,0.9)';
+                        btn.style.transform = btn === prevBtn || btn === nextBtn ? 'translateY(-50%) scale(1)' : 'scale(1)';
+                    });
                 });
-            });
-            
-            // Mostrar
-            document.body.appendChild(lightbox);
-            setTimeout(() => lightbox.style.opacity = '1', 10);
-        }
-        
-        function navigateLightbox(lightbox, direction) {
-            currentLightboxIndex += direction;
-            
-            // Loop infinito
-            if (currentLightboxIndex < 0) currentLightboxIndex = lightboxImages.length - 1;
-            if (currentLightboxIndex >= lightboxImages.length) currentLightboxIndex = 0;
-            
-            // Actualizar imagen
-            const img = lightbox.querySelector('.lightbox-image');
-            const counter = lightbox.querySelector('.lightbox-current');
-            
-            img.style.opacity = '0';
-            setTimeout(() => {
-                img.src = lightboxImages[currentLightboxIndex].src;
-                img.alt = lightboxImages[currentLightboxIndex].alt;
-                counter.textContent = currentLightboxIndex + 1;
-                img.style.opacity = '1';
-            }, 150);
-        }
-        
-        function closeLightbox(lightbox) {
-            // Remover event listener del teclado
-            if (lightbox.keyHandler) {
-                document.removeEventListener('keydown', lightbox.keyHandler);
+                
+                // Mostrar
+                document.body.appendChild(lightbox);
+                setTimeout(() => lightbox.style.opacity = '1', 10);
+                
+                console.log('🔍 Lightbox abierto para:', src);
             }
             
-            lightbox.style.opacity = '0';
-            setTimeout(() => lightbox.remove(), 300);
-        }
+            function navigateLightbox(lightbox, direction) {
+                currentLightboxIndex += direction;
+                
+                // Loop infinito
+                if (currentLightboxIndex < 0) currentLightboxIndex = lightboxImages.length - 1;
+                if (currentLightboxIndex >= lightboxImages.length) currentLightboxIndex = 0;
+                
+                // Actualizar imagen
+                const img = lightbox.querySelector('.lightbox-image');
+                const counter = lightbox.querySelector('.lightbox-current');
+                
+                img.style.opacity = '0';
+                setTimeout(() => {
+                    img.src = lightboxImages[currentLightboxIndex].src;
+                    img.alt = lightboxImages[currentLightboxIndex].alt;
+                    counter.textContent = currentLightboxIndex + 1;
+                    img.style.opacity = '1';
+                }, 150);
+                
+                console.log('🔍 Navegando a imagen:', currentLightboxIndex + 1);
+            }
+            
+            function closeLightbox(lightbox) {
+                // Remover event listener del teclado
+                if (lightbox.keyHandler) {
+                    document.removeEventListener('keydown', lightbox.keyHandler);
+                }
+                
+                lightbox.style.opacity = '0';
+                setTimeout(() => lightbox.remove(), 300);
+                
+                console.log('✕ Lightbox cerrado');
+            }
+        });
     </script>
 </body>
 </html>
