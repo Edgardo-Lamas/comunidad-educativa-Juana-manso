@@ -423,7 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
         statNumbers.forEach(stat => numberObserver.observe(stat));
     }
 
-    // Observar elementos adicionales para animaciones
+    //
     document.querySelectorAll('.card, .news-card, .timeline-item, .stat-card, .gallery-item, .video-card, .testimonial-card, .faq-item, .contact-item, .schedule-card').forEach(el => {
         observer.observe(el);
     });
@@ -574,3 +574,435 @@ const additionalStyles = `
 const additionalStyleSheet = document.createElement('style');
 additionalStyleSheet.textContent = additionalStyles;
 document.head.appendChild(additionalStyleSheet);
+
+// ===== CARROUSEL DE IMÁGENES =====
+class ImageCarousel {
+    constructor() {
+        this.track = document.getElementById('carousel-track');
+        this.prevBtn = document.getElementById('carousel-prev');
+        this.nextBtn = document.getElementById('carousel-next');
+        this.dotsContainer = document.getElementById('carousel-dots');
+        
+        if (!this.track) {
+            console.log('Carrusel: No se encontró elemento carousel-track');
+            return;
+        }
+        
+        this.slides = this.track.querySelectorAll('.carousel-slide');
+        console.log(`Carrusel: Encontradas ${this.slides.length} imágenes`);
+        
+        if (this.slides.length === 0) {
+            console.log('Carrusel: No se encontraron slides');
+            return;
+        }
+        
+        this.currentIndex = 0;
+        this.slidesToShow = this.getSlidesToShow();
+        this.maxIndex = Math.max(0, this.slides.length - this.slidesToShow);
+        
+        console.log(`Carrusel: slidesToShow=${this.slidesToShow}, maxIndex=${this.maxIndex}`);
+        
+        this.init();
+    }
+    
+    getSlidesToShow() {
+        if (window.innerWidth <= 480) return 1;
+        if (window.innerWidth <= 768) return 2;
+        return 4;
+    }
+    
+    init() {
+        // Esperar a que las imágenes se carguen
+        this.waitForImages().then(() => {
+            this.createDots();
+            this.bindEvents();
+            this.updateCarousel();
+            this.startAutoPlay();
+        });
+    }
+    
+    waitForImages() {
+        const images = this.track.querySelectorAll('img');
+        const promises = Array.from(images).map(img => {
+            if (img.complete) {
+                return Promise.resolve();
+            }
+            return new Promise((resolve) => {
+                img.onload = resolve;
+                img.onerror = resolve; // También resolver si hay error
+            });
+        });
+        return Promise.all(promises);
+    }
+    
+    createDots() {
+        if (!this.dotsContainer) return;
+        
+        const dotsNeeded = Math.ceil(this.slides.length / this.slidesToShow);
+        this.dotsContainer.innerHTML = '';
+        
+        for (let i = 0; i < dotsNeeded; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('carousel-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => this.goToSlide(i));
+            this.dotsContainer.appendChild(dot);
+        }
+    }
+    
+    bindEvents() {
+        if (this.prevBtn) {
+            this.prevBtn.addEventListener('click', () => this.prevSlide());
+        }
+        
+        if (this.nextBtn) {
+            this.nextBtn.addEventListener('click', () => this.nextSlide());
+        }
+        
+        // Responsive handling
+        window.addEventListener('resize', () => {
+            this.slidesToShow = this.getSlidesToShow();
+            this.maxIndex = Math.max(0, this.slides.length - this.slidesToShow);
+            this.currentIndex = Math.min(this.currentIndex, this.maxIndex);
+            this.createDots();
+            this.updateCarousel();
+        });
+        
+        // Touch/swipe support
+        let startX = 0;
+        let startY = 0;
+        let isTracking = false;
+        
+        this.track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            isTracking = true;
+            this.pauseAutoPlay();
+        });
+        
+        this.track.addEventListener('touchmove', (e) => {
+            if (!isTracking) return;
+            e.preventDefault();
+        });
+        
+        this.track.addEventListener('touchend', (e) => {
+            if (!isTracking) return;
+            
+            const endX = e.changedTouches[0].clientX;
+            const endY = e.changedTouches[0].clientY;
+            const diffX = startX - endX;
+            const diffY = startY - endY;
+            
+            // Check if horizontal swipe is more significant than vertical
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                if (diffX > 0) {
+                    this.nextSlide();
+                } else {
+                    this.prevSlide();
+                }
+            }
+            
+            isTracking = false;
+            this.startAutoPlay();
+        });
+    }
+    
+    updateCarousel() {
+        const slideWidth = 100 / this.slidesToShow;
+        const translateX = -(this.currentIndex * slideWidth);
+        
+        console.log(`updateCarousel: currentIndex=${this.currentIndex}, slideWidth=${slideWidth}, translateX=${translateX}`);
+        
+        this.track.style.transform = `translateX(${translateX}%)`;
+        this.updateDots();
+    }
+    
+    updateDots() {
+        if (!this.dotsContainer) return;
+        
+        const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === Math.floor(this.currentIndex / this.slidesToShow));
+        });
+    }
+    
+    nextSlide() {
+        this.currentIndex = this.currentIndex >= this.maxIndex ? 0 : this.currentIndex + 1;
+        this.updateCarousel();
+    }
+    
+    prevSlide() {
+        this.currentIndex = this.currentIndex <= 0 ? this.maxIndex : this.currentIndex - 1;
+        this.updateCarousel();
+    }
+    
+    goToSlide(index) {
+        this.currentIndex = Math.min(index * this.slidesToShow, this.maxIndex);
+        this.updateCarousel();
+    }
+    
+    startAutoPlay() {
+        this.pauseAutoPlay();
+        this.autoPlayInterval = setInterval(() => {
+            this.nextSlide();
+        }, 4000);
+    }
+    
+    pauseAutoPlay() {
+        if (this.autoPlayInterval) {
+            clearInterval(this.autoPlayInterval);
+        }
+    }
+}
+
+// Inicializar carrousel cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', () => {
+    new ImageCarousel();
+});
+
+// Pausar autoplay cuando se hace hover sobre el carrousel
+document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.querySelector('.image-carousel');
+    if (carousel && window.carouselInstance) {
+        carousel.addEventListener('mouseenter', () => {
+            window.carouselInstance.pauseAutoPlay();
+        });
+        
+        carousel.addEventListener('mouseleave', () => {
+            window.carouselInstance.startAutoPlay();
+        });
+    }
+});
+
+// ===== GALERÍA CON LIGHTBOX =====
+class LightboxGallery {
+    constructor(gallerySelector) {
+        this.gallery = document.querySelector(gallerySelector);
+        if (!this.gallery) return;
+        
+        this.images = this.gallery.querySelectorAll('.gallery-image');
+        this.currentIndex = 0;
+        this.isVisible = false;
+        
+        this.init();
+    }
+    
+    init() {
+        this.createModal();
+        this.bindEvents();
+        this.initCarousel();
+    }
+    
+    createModal() {
+        const modal = document.createElement('div');
+        modal.className = 'lightbox-modal';
+        modal.innerHTML = `
+            <div class="lightbox-content">
+                <button class="lightbox-close" type="button" aria-label="Cerrar">&times;</button>
+                <button class="lightbox-nav lightbox-prev" type="button" aria-label="Anterior">‹</button>
+                <button class="lightbox-nav lightbox-next" type="button" aria-label="Siguiente">›</button>
+                <img class="lightbox-image" src="" alt="">
+                <div class="lightbox-counter">
+                    <span class="lightbox-current">1</span> / <span class="lightbox-total">${this.images.length}</span>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        
+        this.modal = modal;
+        this.lightboxImage = modal.querySelector('.lightbox-image');
+        this.currentSpan = modal.querySelector('.lightbox-current');
+        this.closeBtn = modal.querySelector('.lightbox-close');
+        this.prevBtn = modal.querySelector('.lightbox-prev');
+        this.nextBtn = modal.querySelector('.lightbox-next');
+    }
+    
+    bindEvents() {
+        // Abrir lightbox al hacer clic en imagen
+        this.images.forEach((img, index) => {
+            img.addEventListener('click', () => this.openLightbox(index));
+        });
+        
+        // Cerrar lightbox
+        this.closeBtn.addEventListener('click', () => this.closeLightbox());
+        this.modal.addEventListener('click', (e) => {
+            if (e.target === this.modal) this.closeLightbox();
+        });
+        
+        // Navegación
+        this.prevBtn.addEventListener('click', () => this.previousImage());
+        this.nextBtn.addEventListener('click', () => this.nextImage());
+        
+        // Teclado
+        document.addEventListener('keydown', (e) => {
+            if (!this.isVisible) return;
+            
+            switch(e.key) {
+                case 'Escape':
+                    this.closeLightbox();
+                    break;
+                case 'ArrowLeft':
+                    this.previousImage();
+                    break;
+                case 'ArrowRight':
+                    this.nextImage();
+                    break;
+            }
+        });
+        
+        // Touch para móvil
+        this.bindTouchEvents();
+    }
+    
+    bindTouchEvents() {
+        let startX = 0;
+        let startY = 0;
+        
+        this.modal.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        });
+        
+        this.modal.addEventListener('touchend', (e) => {
+            const endX = e.changedTouches[0].clientX;
+            const endY = e.changedTouches[0].clientY;
+            const diffX = startX - endX;
+            const diffY = startY - endY;
+            
+            // Solo procesar swipe horizontal si es mayor que vertical
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                if (diffX > 0) {
+                    this.nextImage();
+                } else {
+                    this.previousImage();
+                }
+            }
+        });
+    }
+    
+    initCarousel() {
+        const carousel = this.gallery.querySelector('.gallery-carousel');
+        if (!carousel) return;
+        
+        const track = carousel.querySelector('.gallery-carousel-track');
+        const slides = carousel.querySelectorAll('.gallery-slide');
+        const prevBtn = carousel.querySelector('.gallery-btn-prev');
+        const nextBtn = carousel.querySelector('.gallery-btn-next');
+        const dotsContainer = carousel.querySelector('.gallery-dots');
+        
+        if (!track || slides.length === 0) return;
+        
+        let currentSlide = 0;
+        const slidesToShow = window.innerWidth <= 768 ? 1 : 3;
+        const maxSlides = Math.max(0, slides.length - slidesToShow);
+        
+        // Crear dots
+        if (dotsContainer) {
+            const dotsCount = Math.ceil(slides.length / slidesToShow);
+            for (let i = 0; i < dotsCount; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'gallery-dot';
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    currentSlide = i * slidesToShow;
+                    if (currentSlide > maxSlides) currentSlide = maxSlides;
+                    updateCarousel();
+                });
+                dotsContainer.appendChild(dot);
+            }
+        }
+        
+        function updateCarousel() {
+            const slideWidth = 100 / slidesToShow;
+            track.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+            
+            // Actualizar dots
+            const dots = dotsContainer.querySelectorAll('.gallery-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === Math.floor(currentSlide / slidesToShow));
+            });
+            
+            // Actualizar botones
+            if (prevBtn) prevBtn.style.opacity = currentSlide === 0 ? '0.5' : '1';
+            if (nextBtn) nextBtn.style.opacity = currentSlide >= maxSlides ? '0.5' : '1';
+        }
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                if (currentSlide > 0) {
+                    currentSlide -= slidesToShow;
+                    if (currentSlide < 0) currentSlide = 0;
+                    updateCarousel();
+                }
+            });
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                if (currentSlide < maxSlides) {
+                    currentSlide += slidesToShow;
+                    if (currentSlide > maxSlides) currentSlide = maxSlides;
+                    updateCarousel();
+                }
+            });
+        }
+        
+        updateCarousel();
+    }
+    
+    openLightbox(index) {
+        this.currentIndex = index;
+        this.isVisible = true;
+        this.updateImage();
+        this.modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    closeLightbox() {
+        this.isVisible = false;
+        this.modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    updateImage() {
+        if (this.images[this.currentIndex]) {
+            this.lightboxImage.src = this.images[this.currentIndex].src;
+            this.lightboxImage.alt = this.images[this.currentIndex].alt;
+            this.currentSpan.textContent = this.currentIndex + 1;
+        }
+    }
+    
+    nextImage() {
+        this.currentIndex = (this.currentIndex + 1) % this.images.length;
+        this.updateImage();
+    }
+    
+    previousImage() {
+        this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+        this.updateImage();
+    }
+}
+
+// ===== INICIALIZACIÓN ACTUALIZADA =====
+document.addEventListener('DOMContentLoaded', function() {
+    // Navegación móvil
+    const nav = new MobileNavigation();
+    
+    // Carousel de imágenes
+    const carousel = new ImageCarousel();
+    
+    // Lightbox Gallery para cursos
+    const lightboxGallery = new LightboxGallery('.lightbox-gallery');
+    
+    // Timeline
+    initTimeline();
+    
+    // FAQ
+    initFAQ();
+    
+    // Animaciones al scroll
+    initScrollAnimations();
+    
+    // Navegación suave
+    initSmoothScrolling();
+});
