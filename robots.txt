@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://comunidad-educativa-juana-manso.netlify.app/sitemap.xml
+
+# Permitir acceso a recursos importantes
+Allow: /css/
+Allow: /js/
+Allow: /img/
+
+# Disallow solo archivos innecesarios
+Disallow: /*.tmp$
+Disallow: /*.log$
+
+# Información de contacto
+# Comunidad Educativa Juana Manso
+# Pabellón 16B, Unidad 9
+# Buenos Aires, Argentina
+# Educación para la Resocialización
