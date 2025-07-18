@@ -578,21 +578,30 @@ document.head.appendChild(additionalStyleSheet);
 // ===== CARROUSEL DE IMÁGENES =====
 class ImageCarousel {
     constructor() {
+        console.log('🚀 Iniciando ImageCarousel...');
+        
         this.track = document.getElementById('carousel-track');
         this.prevBtn = document.getElementById('carousel-prev');
         this.nextBtn = document.getElementById('carousel-next');
         this.dotsContainer = document.getElementById('carousel-dots');
         
+        console.log('🔍 Elementos encontrados:', {
+            track: !!this.track,
+            prevBtn: !!this.prevBtn,
+            nextBtn: !!this.nextBtn,
+            dotsContainer: !!this.dotsContainer
+        });
+        
         if (!this.track) {
-            console.log('Carrusel: No se encontró elemento carousel-track');
+            console.error('❌ Carrusel: No se encontró elemento carousel-track');
             return;
         }
         
         this.slides = this.track.querySelectorAll('.carousel-slide');
-        console.log(`Carrusel: Encontradas ${this.slides.length} imágenes`);
+        console.log(`📸 Carrusel: Encontradas ${this.slides.length} imágenes`);
         
         if (this.slides.length === 0) {
-            console.log('Carrusel: No se encontraron slides');
+            console.error('❌ Carrusel: No se encontraron slides');
             return;
         }
         
@@ -600,24 +609,50 @@ class ImageCarousel {
         this.slidesToShow = this.getSlidesToShow();
         this.maxIndex = Math.max(0, this.slides.length - this.slidesToShow);
         
-        console.log(`Carrusel: slidesToShow=${this.slidesToShow}, maxIndex=${this.maxIndex}`);
+        console.log(`📊 Carrusel: slidesToShow=${this.slidesToShow}, maxIndex=${this.maxIndex}`);
         
         this.init();
     }
     
     getSlidesToShow() {
-        if (window.innerWidth <= 480) return 1;
-        if (window.innerWidth <= 768) return 2;
+        const width = window.innerWidth;
+        if (width <= 480) return 1;
+        if (width <= 768) return 2;
         return 4;
     }
     
     init() {
+        console.log('⚙️ Inicializando carrusel...');
+        
+        // Configurar estilos iniciales
+        this.setupStyles();
+        
         // Esperar a que las imágenes se carguen
         this.waitForImages().then(() => {
+            console.log('🖼️ Imágenes cargadas, configurando carrusel...');
             this.createDots();
             this.bindEvents();
             this.updateCarousel();
             this.startAutoPlay();
+            console.log('✅ Carrusel inicializado correctamente');
+        });
+    }
+    
+    setupStyles() {
+        // Asegurarse de que el track tenga los estilos correctos
+        if (this.track) {
+            this.track.style.display = 'flex';
+            this.track.style.transition = 'transform 0.5s ease-in-out';
+            this.track.style.height = '100%';
+        }
+        
+        // Configurar slides
+        this.slides.forEach(slide => {
+            slide.style.minWidth = '25%';
+            slide.style.height = '100%';
+            slide.style.position = 'relative';
+            slide.style.padding = '0 5px';
+            slide.style.boxSizing = 'border-box';
         });
     }
     
@@ -711,7 +746,12 @@ class ImageCarousel {
         const slideWidth = 100 / this.slidesToShow;
         const translateX = -(this.currentIndex * slideWidth);
         
-        console.log(`updateCarousel: currentIndex=${this.currentIndex}, slideWidth=${slideWidth}, translateX=${translateX}`);
+        console.log(`🔄 updateCarousel: currentIndex=${this.currentIndex}, slideWidth=${slideWidth}, translateX=${translateX}%`);
+        
+        // Actualizar el ancho de cada slide
+        this.slides.forEach(slide => {
+            slide.style.minWidth = `${slideWidth}%`;
+        });
         
         this.track.style.transform = `translateX(${translateX}%)`;
         this.updateDots();
@@ -753,24 +793,38 @@ class ImageCarousel {
             clearInterval(this.autoPlayInterval);
         }
     }
+    
+    resumeAutoPlay() {
+        this.startAutoPlay();
+    }
 }
 
 // Inicializar carrousel cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
-    new ImageCarousel();
-});
-
-// Pausar autoplay cuando se hace hover sobre el carrousel
-document.addEventListener('DOMContentLoaded', () => {
-    const carousel = document.querySelector('.image-carousel');
-    if (carousel && window.carouselInstance) {
-        carousel.addEventListener('mouseenter', () => {
-            window.carouselInstance.pauseAutoPlay();
+    console.log('🚀 DOM cargado, inicializando carrusel...');
+    
+    // Verificar que existe el elemento del carrusel
+    const carouselElement = document.querySelector('.image-carousel');
+    if (carouselElement) {
+        console.log('✅ Elemento carrusel encontrado, creando instancia...');
+        
+        // Crear instancia y almacenar en window
+        window.carouselInstance = new ImageCarousel();
+        
+        // Pausar autoplay cuando se hace hover sobre el carrousel
+        carouselElement.addEventListener('mouseenter', () => {
+            if (window.carouselInstance && window.carouselInstance.pauseAutoPlay) {
+                window.carouselInstance.pauseAutoPlay();
+            }
         });
         
-        carousel.addEventListener('mouseleave', () => {
-            window.carouselInstance.startAutoPlay();
+        carouselElement.addEventListener('mouseleave', () => {
+            if (window.carouselInstance && window.carouselInstance.startAutoPlay) {
+                window.carouselInstance.startAutoPlay();
+            }
         });
+    } else {
+        console.error('❌ No se encontró elemento .image-carousel en el DOM');
     }
 });
 

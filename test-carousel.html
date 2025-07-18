@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Carrusel</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .test-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .image-carousel {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 25%;
+            height: 100%;
+            position: relative;
+            padding: 0 5px;
+            box-sizing: border-box;
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            color: #333;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .carousel-btn:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn-prev {
+            left: 10px;
+        }
+
+        .carousel-btn-next {
+            right: 10px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: #333;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Test del Carrusel</h1>
+        
+        <div class="image-carousel">
+            <div class="carousel-container">
+                <div class="carousel-track" id="carousel-track">
+                    <div class="carousel-slide">
+                        <img src="img/WhatsApp Image 2025-07-11 at 14.08.14.jpeg" alt="Momento destacado 1" class="carousel-image">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="img/WhatsApp Image 2025-07-11 at 14.08.15.jpeg" alt="Momento destacado 2" class="carousel-image">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="img/WhatsApp Image 2025-07-11 at 14.08.16.jpeg" alt="Momento destacado 3" class="carousel-image">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="img/WhatsApp Image 2025-07-11 at 14.08.17.jpeg" alt="Momento destacado 4" class="carousel-image">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="img/WhatsApp Image 2025-07-11 at 14.08.18.jpeg" alt="Momento destacado 5" class="carousel-image">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="img/WhatsApp Image 2025-07-11 at 14.08.19.jpeg" alt="Momento destacado 6" class="carousel-image">
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn carousel-btn-prev" id="carousel-prev">❮</button>
+            <button class="carousel-btn carousel-btn-next" id="carousel-next">❯</button>
+            <div class="carousel-dots" id="carousel-dots"></div>
+        </div>
+    </div>
+
+    <script>
+        // Incluir el código del carrusel aquí
+        class ImageCarousel {
+            constructor() {
+                console.log('🚀 Iniciando ImageCarousel...');
+                
+                this.track = document.getElementById('carousel-track');
+                this.prevBtn = document.getElementById('carousel-prev');
+                this.nextBtn = document.getElementById('carousel-next');
+                this.dotsContainer = document.getElementById('carousel-dots');
+                
+                console.log('🔍 Elementos encontrados:', {
+                    track: !!this.track,
+                    prevBtn: !!this.prevBtn,
+                    nextBtn: !!this.nextBtn,
+                    dotsContainer: !!this.dotsContainer
+                });
+                
+                if (!this.track) {
+                    console.error('❌ Carrusel: No se encontró elemento carousel-track');
+                    return;
+                }
+                
+                this.slides = this.track.querySelectorAll('.carousel-slide');
+                console.log(`📸 Carrusel: Encontradas ${this.slides.length} imágenes`);
+                
+                if (this.slides.length === 0) {
+                    console.error('❌ Carrusel: No se encontraron slides');
+                    return;
+                }
+                
+                this.currentIndex = 0;
+                this.slidesToShow = this.getSlidesToShow();
+                this.maxIndex = Math.max(0, this.slides.length - this.slidesToShow);
+                
+                console.log(`📊 Carrusel: slidesToShow=${this.slidesToShow}, maxIndex=${this.maxIndex}`);
+                
+                this.init();
+            }
+            
+            getSlidesToShow() {
+                const width = window.innerWidth;
+                if (width <= 480) return 1;
+                if (width <= 768) return 2;
+                return 4;
+            }
+            
+            init() {
+                console.log('⚙️ Inicializando carrusel...');
+                
+                this.setupStyles();
+                this.createDots();
+                this.bindEvents();
+                this.updateCarousel();
+                this.startAutoPlay();
+                console.log('✅ Carrusel inicializado correctamente');
+            }
+            
+            setupStyles() {
+                if (this.track) {
+                    this.track.style.display = 'flex';
+                    this.track.style.transition = 'transform 0.5s ease-in-out';
+                    this.track.style.height = '100%';
+                }
+                
+                this.slides.forEach(slide => {
+                    slide.style.minWidth = '25%';
+                    slide.style.height = '100%';
+                    slide.style.position = 'relative';
+                    slide.style.padding = '0 5px';
+                    slide.style.boxSizing = 'border-box';
+                });
+            }
+            
+            createDots() {
+                if (!this.dotsContainer) return;
+                
+                const dotsNeeded = Math.ceil(this.slides.length / this.slidesToShow);
+                this.dotsContainer.innerHTML = '';
+                
+                for (let i = 0; i < dotsNeeded; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('carousel-dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => this.goToSlide(i));
+                    this.dotsContainer.appendChild(dot);
+                }
+            }
+            
+            bindEvents() {
+                if (this.prevBtn) {
+                    this.prevBtn.addEventListener('click', () => this.prevSlide());
+                }
+                
+                if (this.nextBtn) {
+                    this.nextBtn.addEventListener('click', () => this.nextSlide());
+                }
+                
+                window.addEventListener('resize', () => {
+                    this.slidesToShow = this.getSlidesToShow();
+                    this.maxIndex = Math.max(0, this.slides.length - this.slidesToShow);
+                    this.currentIndex = Math.min(this.currentIndex, this.maxIndex);
+                    this.createDots();
+                    this.updateCarousel();
+                });
+            }
+            
+            updateCarousel() {
+                const slideWidth = 100 / this.slidesToShow;
+                const translateX = -(this.currentIndex * slideWidth);
+                
+                console.log(`🔄 updateCarousel: currentIndex=${this.currentIndex}, slideWidth=${slideWidth}, translateX=${translateX}%`);
+                
+                this.slides.forEach(slide => {
+                    slide.style.minWidth = `${slideWidth}%`;
+                });
+                
+                this.track.style.transform = `translateX(${translateX}%)`;
+                this.updateDots();
+            }
+            
+            updateDots() {
+                if (!this.dotsContainer) return;
+                
+                const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === Math.floor(this.currentIndex / this.slidesToShow));
+                });
+            }
+            
+            nextSlide() {
+                this.currentIndex = this.currentIndex >= this.maxIndex ? 0 : this.currentIndex + 1;
+                this.updateCarousel();
+            }
+            
+            prevSlide() {
+                this.currentIndex = this.currentIndex <= 0 ? this.maxIndex : this.currentIndex - 1;
+                this.updateCarousel();
+            }
+            
+            goToSlide(index) {
+                this.currentIndex = Math.min(index * this.slidesToShow, this.maxIndex);
+                this.updateCarousel();
+            }
+            
+            startAutoPlay() {
+                this.pauseAutoPlay();
+                this.autoPlayInterval = setInterval(() => {
+                    this.nextSlide();
+                }, 4000);
+            }
+            
+            pauseAutoPlay() {
+                if (this.autoPlayInterval) {
+                    clearInterval(this.autoPlayInterval);
+                }
+            }
+        }
+
+        // Inicializar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = new ImageCarousel();
+        });
+    </script>
+</body>
+</html>
