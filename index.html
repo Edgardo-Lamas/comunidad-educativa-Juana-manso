@@ -51,6 +51,7 @@
             </ul>
             <div class="menu-toggle" id="menu-toggle">
                 <span></span>
+                
                 <span></span>
                 <span></span>
             </div>
@@ -181,6 +182,100 @@
                     <span class="card-icon">🔄</span>
                     <h3>Nuevos Talleres</h3>
                     <p>Estamos desarrollando nuevos programas educativos basados en las necesidades identificadas y el éxito de nuestras capacitaciones actuales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Actividades Académicas -->
+    <section id="actividades-academicas" class="section fade-in">
+        <div class="container">
+            <h2 class="section-title">Actividades Académicas</h2>
+            <p class="section-subtitle">
+                Conferencias, charlas y eventos educativos especializados que enriquecen nuestra formación
+            </p>
+            
+            <div class="videos-grid">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/NGVu-A3Z2nc" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-content">
+                        <h3>🎉 Primer Aniversario</h3>
+                        <p>Celebración del primer aniversario de la Comunidad Educativa Juana Manso, recordando el camino recorrido y los logros alcanzados.</p>
+                        <div class="video-meta">
+                            <span class="video-date">📅 Julio 2025</span>
+                            <span class="video-duration">⏱️ 21:28</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/YdTC3LblUfg" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-content">
+                        <h3>📚 Apertura del Ciclo de Encuentros 2025</h3>
+                        <p>Dr. José Nicolás Villafañe inaugura el ciclo de encuentros académicos 2025 con una charla sobre acceso a la justicia.</p>
+                        <div class="video-meta">
+                            <span class="video-date">📅 Enero 2025</span>
+                            <span class="video-duration">⏱️ 1:10:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/_Mnbn0PLBwU" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-content">
+                        <h3>⚖️ Ejecución de la Pena - Preguntas y Respuestas</h3>
+                        <p>Sesión de preguntas y respuestas con el Dr. José Nicolás Villafañe sobre aspectos fundamentales de la ejecución penal.</p>
+                        <div class="video-meta">
+                            <span class="video-date">📅 Diciembre 2024</span>
+                            <span class="video-duration">⏱️ 49:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/mfntF_-WshY" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-content">
+                        <h3>🎯 Exposición del Dr. Gabriel Alejandro David</h3>
+                        <p>Conferencia especializada sobre ejecución de la pena dictada por el Dr. Gabriel Alejandro David, profundizando en aspectos jurídicos clave.</p>
+                        <div class="video-meta">
+                            <span class="video-date">📅 Enero 2025</span>
+                            <span class="video-duration">⏱️ 1:10:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <iframe src="https://www.youtube.com/embed/GdBpnWrPPjQ" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-content">
+                        <h3>💬 Conversatorio con el Dr. Federico Merlini</h3>
+                        <p>Conversatorio sobre ejecución de la pena con el Dr. Federico Merlini, abordando temas de actualidad en el derecho penitenciario.</p>
+                        <div class="video-meta">
+                            <span class="video-date">📅 Enero 2025</span>
+                            <span class="video-duration">⏱️ 1:14:28</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card featured">
+                    <div class="video-content full-width">
+                        <div class="featured-badge">✨ Próxima Actividad</div>
+                        <h3>🔜 Próximos Encuentros Académicos</h3>
+                        <p>Estamos organizando nuevas conferencias y talleres especializados. Mantente atento a nuestras próximas actividades académicas que complementarán tu formación.</p>
+                        <div class="video-meta">
+                            <span class="video-date">📅 Segundo Cuatrimestre 2025</span>
+                            <span class="video-status">🎯 En Programación</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -396,6 +491,152 @@
             .carousel-button {
                 padding: 10px 15px;
                 font-size: 16px;
+            }
+        }
+
+        /* CSS ACTIVIDADES ACADÉMICAS */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-content {
+            padding: 1.5rem;
+        }
+        
+        .video-content h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .video-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .video-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .video-date,
+        .video-duration,
+        .video-status {
+            background: #f8f9fa;
+            color: #666;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .video-date {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #1976d2;
+        }
+        
+        .video-duration {
+            background: linear-gradient(135deg, #f3e5f5, #ce93d8);
+            color: #7b1fa2;
+        }
+        
+        .video-status {
+            background: linear-gradient(135deg, #e8f5e8, #a5d6a7);
+            color: #388e3c;
+        }
+        
+        .video-card.featured {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 2px solid #3498db;
+        }
+        
+        .video-card.featured .video-content {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .video-card.featured .video-content.full-width {
+            width: 100%;
+        }
+        
+        .featured-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .video-card.featured h3 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .video-card.featured p {
+            font-size: 1rem;
+            color: #555;
+        }
+        
+        @media (max-width: 768px) {
+            .videos-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .video-card {
+                margin: 0;
+            }
+            
+            .video-thumbnail {
+                height: 180px;
+            }
+            
+            .video-content {
+                padding: 1rem;
+            }
+            
+            .video-meta {
+                gap: 0.5rem;
             }
         }
     </style>
