@@ -138,35 +138,30 @@
                 </article>
             </div>
 
-            <!-- Carrousel de Imágenes -->
+            <!-- Carrousel de Imágenes SIMPLE -->
             <div class="image-carousel-section">
                 <h3 class="carousel-title">Momentos Destacados</h3>
-                <div class="image-carousel">
-                    <div class="carousel-container">
-                        <div class="carousel-track" id="carousel-track">
-                            <div class="carousel-slide">
-                                <img src="img/WhatsApp Image 2025-07-11 at 14.08.14.jpeg" alt="Momento destacado 1" class="carousel-image">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="img/WhatsApp Image 2025-07-11 at 14.08.15.jpeg" alt="Momento destacado 2" class="carousel-image">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="img/WhatsApp Image 2025-07-11 at 14.08.16.jpeg" alt="Momento destacado 3" class="carousel-image">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="img/WhatsApp Image 2025-07-11 at 14.08.17.jpeg" alt="Momento destacado 4" class="carousel-image">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="img/WhatsApp Image 2025-07-11 at 14.08.18.jpeg" alt="Momento destacado 5" class="carousel-image">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="img/WhatsApp Image 2025-07-11 at 14.08.19.jpeg" alt="Momento destacado 6" class="carousel-image">
-                            </div>
+                <div class="simple-carousel" id="simple-carousel">
+                    <div class="carousel-wrapper">
+                        <div class="carousel-images" id="carousel-images">
+                            <img src="img/WhatsApp Image 2025-07-11 at 14.08.14.jpeg" alt="Momento 1" class="carousel-img active">
+                            <img src="img/WhatsApp Image 2025-07-11 at 14.08.15.jpeg" alt="Momento 2" class="carousel-img">
+                            <img src="img/WhatsApp Image 2025-07-11 at 14.08.16.jpeg" alt="Momento 3" class="carousel-img">
+                            <img src="img/WhatsApp Image 2025-07-11 at 14.08.17.jpeg" alt="Momento 4" class="carousel-img">
+                            <img src="img/WhatsApp Image 2025-07-11 at 14.08.18.jpeg" alt="Momento 5" class="carousel-img">
+                            <img src="img/WhatsApp Image 2025-07-11 at 14.08.19.jpeg" alt="Momento 6" class="carousel-img">
                         </div>
+                        <button class="carousel-button prev" id="prev-btn">❮</button>
+                        <button class="carousel-button next" id="next-btn">❯</button>
                     </div>
-                    <button class="carousel-btn carousel-btn-prev" id="carousel-prev">❮</button>
-                    <button class="carousel-btn carousel-btn-next" id="carousel-next">❯</button>
-                    <div class="carousel-dots" id="carousel-dots"></div>
+                    <div class="carousel-indicators" id="carousel-indicators">
+                        <span class="indicator active" data-slide="0"></span>
+                        <span class="indicator" data-slide="1"></span>
+                        <span class="indicator" data-slide="2"></span>
+                        <span class="indicator" data-slide="3"></span>
+                        <span class="indicator" data-slide="4"></span>
+                        <span class="indicator" data-slide="5"></span>
+                    </div>
                 </div>
             </div>
 
@@ -306,6 +301,182 @@
 
     <!-- JavaScript -->
     <script src="js/main.js"></script>
-    <script src="js/simple-carousel.js"></script>
+    <style>
+        /* CSS CARRUSEL SIMPLE */
+        .simple-carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        
+        .carousel-wrapper {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .carousel-images {
+            height: 100%;
+        }
+        
+        .carousel-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .carousel-img.active {
+            opacity: 1;
+        }
+        
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-button:hover {
+            background: rgba(0,0,0,0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-button.prev {
+            left: 15px;
+        }
+        
+        .carousel-button.next {
+            right: 15px;
+        }
+        
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            background: rgba(0,0,0,0.05);
+        }
+        
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .indicator.active {
+            background: #3498db;
+            transform: scale(1.2);
+        }
+        
+        @media (max-width: 768px) {
+            .carousel-wrapper {
+                height: 250px;
+            }
+            
+            .carousel-button {
+                padding: 10px 15px;
+                font-size: 16px;
+            }
+        }
+    </style>
+    <script>
+        // CARRUSEL SÚPER SIMPLE
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎠 Carrusel simple iniciando...');
+            
+            const images = document.querySelectorAll('.carousel-img');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            if (!images.length) {
+                console.log('❌ No hay imágenes');
+                return;
+            }
+            
+            let currentIndex = 0;
+            let autoplayTimer;
+            
+            // Mostrar imagen
+            function showImage(index) {
+                images.forEach((img, i) => {
+                    img.classList.toggle('active', i === index);
+                });
+                
+                indicators.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+                
+                console.log(`📸 Imagen ${index + 1}/${images.length}`);
+            }
+            
+            // Siguiente imagen
+            function nextImage() {
+                currentIndex = (currentIndex + 1) % images.length;
+                showImage(currentIndex);
+            }
+            
+            // Imagen anterior
+            function prevImage() {
+                currentIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+                showImage(currentIndex);
+            }
+            
+            // Autoplay
+            function startAutoplay() {
+                stopAutoplay();
+                autoplayTimer = setInterval(nextImage, 4000);
+            }
+            
+            function stopAutoplay() {
+                if (autoplayTimer) clearInterval(autoplayTimer);
+            }
+            
+            // Eventos
+            if (prevBtn) prevBtn.addEventListener('click', prevImage);
+            if (nextBtn) nextBtn.addEventListener('click', nextImage);
+            
+            // Indicadores
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    showImage(currentIndex);
+                });
+            });
+            
+            // Hover para pausar
+            const carousel = document.getElementById('simple-carousel');
+            if (carousel) {
+                carousel.addEventListener('mouseenter', stopAutoplay);
+                carousel.addEventListener('mouseleave', startAutoplay);
+            }
+            
+            // Inicializar
+            showImage(0);
+            startAutoplay();
+            
+            console.log('✅ Carrusel simple funcionando!');
+        });
+    </script>
 </body>
 </html>

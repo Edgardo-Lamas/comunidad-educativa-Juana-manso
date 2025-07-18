@@ -174,39 +174,39 @@
             <div class="lightbox-gallery">
                 <div class="gallery-carousel">
                     <div class="gallery-carousel-container">
-                        <div class="gallery-carousel-track" id="gallery-carousel-track">
-                            <div class="gallery-slide">
-                                <img src="img/WhatsApp Image 2025-07-11 at 14.08.14.jpeg" alt="Clase práctica de RCP" class="gallery-image" data-lightbox="rcp-gallery">
+                        <div class="gallery-slides" id="gallery-slides">
+                            <div class="gallery-slide active">
+                                <img src="img/WhatsApp Image 2025-07-11 at 14.08.14.jpeg" alt="Clase práctica de RCP" class="gallery-image">
                                 <div class="gallery-overlay">
                                     <span class="gallery-zoom">🔍</span>
                                 </div>
                             </div>
                             <div class="gallery-slide">
-                                <img src="img/WhatsApp Image 2025-07-11 at 14.08.15.jpeg" alt="Práctica con maniquíes" class="gallery-image" data-lightbox="rcp-gallery">
+                                <img src="img/WhatsApp Image 2025-07-11 at 14.08.15.jpeg" alt="Práctica con maniquíes" class="gallery-image">
                                 <div class="gallery-overlay">
                                     <span class="gallery-zoom">🔍</span>
                                 </div>
                             </div>
                             <div class="gallery-slide">
-                                <img src="img/WhatsApp Image 2025-07-11 at 14.08.16.jpeg" alt="Entrenamiento de emergencias" class="gallery-image" data-lightbox="rcp-gallery">
+                                <img src="img/WhatsApp Image 2025-07-11 at 14.08.16.jpeg" alt="Entrenamiento de emergencias" class="gallery-image">
                                 <div class="gallery-overlay">
                                     <span class="gallery-zoom">🔍</span>
                                 </div>
                             </div>
                             <div class="gallery-slide">
-                                <img src="img/WhatsApp Image 2025-07-11 at 14.08.17.jpeg" alt="Certificación de alumnos" class="gallery-image" data-lightbox="rcp-gallery">
+                                <img src="img/WhatsApp Image 2025-07-11 at 14.08.17.jpeg" alt="Certificación de alumnos" class="gallery-image">
                                 <div class="gallery-overlay">
                                     <span class="gallery-zoom">🔍</span>
                                 </div>
                             </div>
                             <div class="gallery-slide">
-                                <img src="img/WhatsApp Image 2025-07-11 at 14.08.18.jpeg" alt="Técnicas de primeros auxilios" class="gallery-image" data-lightbox="rcp-gallery">
+                                <img src="img/WhatsApp Image 2025-07-11 at 14.08.18.jpeg" alt="Técnicas de primeros auxilios" class="gallery-image">
                                 <div class="gallery-overlay">
                                     <span class="gallery-zoom">🔍</span>
                                 </div>
                             </div>
                             <div class="gallery-slide">
-                                <img src="img/WhatsApp Image 2025-07-11 at 14.08.19.jpeg" alt="Simulacro de emergencia" class="gallery-image" data-lightbox="rcp-gallery">
+                                <img src="img/WhatsApp Image 2025-07-11 at 14.08.19.jpeg" alt="Simulacro de emergencia" class="gallery-image">
                                 <div class="gallery-overlay">
                                     <span class="gallery-zoom">🔍</span>
                                 </div>
@@ -382,5 +382,437 @@
 
     <!-- JavaScript -->
     <script src="js/main.js"></script>
+    <style>
+        /* CARRUSEL RCP CON LIGHTBOX */
+        .gallery-carousel {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-carousel-container {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .gallery-slides {
+            height: 100%;
+        }
+        
+        .gallery-slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            cursor: pointer;
+        }
+        
+        .gallery-slide.active {
+            opacity: 1;
+        }
+        
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-slide:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-zoom {
+            font-size: 48px;
+            color: white;
+        }
+        
+        .gallery-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-btn:hover {
+            background: rgba(0,0,0,0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .gallery-btn-prev {
+            left: 15px;
+        }
+        
+        .gallery-btn-next {
+            right: 15px;
+        }
+        
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            background: rgba(0,0,0,0.05);
+        }
+        
+        .gallery-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-dot.active {
+            background: #e74c3c;
+            transform: scale(1.2);
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-carousel-container {
+                height: 250px;
+            }
+            
+            .gallery-btn {
+                padding: 10px 15px;
+                font-size: 16px;
+            }
+        }
+    </style>
+    <script>
+        // CARRUSEL RCP CON LIGHTBOX
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎠 Carrusel RCP iniciando...');
+            
+            const slides = document.querySelectorAll('.gallery-slide');
+            const prevBtn = document.getElementById('gallery-prev');
+            const nextBtn = document.getElementById('gallery-next');
+            const dotsContainer = document.getElementById('gallery-dots');
+            
+            if (!slides.length) {
+                console.log('❌ No hay slides de galería');
+                return;
+            }
+            
+            let currentIndex = 0;
+            let autoplayTimer;
+            
+            // Crear dots
+            function createDots() {
+                if (!dotsContainer) return;
+                
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < slides.length; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'gallery-dot';
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => goToSlide(i));
+                    dotsContainer.appendChild(dot);
+                }
+            }
+            
+            // Mostrar slide
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+                
+                // Actualizar dots
+                const dots = dotsContainer.querySelectorAll('.gallery-dot');
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+                
+                console.log(`📸 Slide RCP ${index + 1}/${slides.length}`);
+            }
+            
+            // Navegación
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                showSlide(currentIndex);
+            }
+            
+            function prevSlide() {
+                currentIndex = currentIndex === 0 ? slides.length - 1 : currentIndex - 1;
+                showSlide(currentIndex);
+            }
+            
+            function goToSlide(index) {
+                currentIndex = index;
+                showSlide(currentIndex);
+            }
+            
+            // Autoplay
+            function startAutoplay() {
+                stopAutoplay();
+                autoplayTimer = setInterval(nextSlide, 5000);
+            }
+            
+            function stopAutoplay() {
+                if (autoplayTimer) clearInterval(autoplayTimer);
+            }
+            
+            // Eventos
+            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+            
+            // Hover para pausar
+            const carousel = document.querySelector('.gallery-carousel');
+            if (carousel) {
+                carousel.addEventListener('mouseenter', stopAutoplay);
+                carousel.addEventListener('mouseleave', startAutoplay);
+            }
+            
+            // Lightbox al hacer clic
+            slides.forEach((slide, index) => {
+                slide.addEventListener('click', (e) => {
+                    console.log('Slide clicked:', index);
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const img = slide.querySelector('img');
+                    if (img) {
+                        console.log('Opening lightbox for:', img.src);
+                        openLightbox(img.src, img.alt);
+                    }
+                });
+            });
+            
+            // Inicializar
+            createDots();
+            showSlide(0);
+            startAutoplay();
+            
+            console.log('✅ Carrusel RCP funcionando!');
+        });
+        
+        // LIGHTBOX AVANZADO CON NAVEGACIÓN
+        let currentLightboxIndex = 0;
+        const lightboxImages = Array.from(slides).map(slide => {
+            const img = slide.querySelector('img');
+            return {
+                src: img.src,
+                alt: img.alt
+            };
+        });
+        
+        function openLightbox(src, alt) {
+            // Encontrar el índice de la imagen actual
+            currentLightboxIndex = lightboxImages.findIndex(img => img.src === src);
+            
+            const lightbox = document.createElement('div');
+            lightbox.className = 'lightbox-overlay';
+            lightbox.innerHTML = `
+                <div class="lightbox-content">
+                    <img src="${src}" alt="${alt}" class="lightbox-image">
+                    <button class="lightbox-close">✕</button>
+                    <button class="lightbox-prev">❮</button>
+                    <button class="lightbox-next">❯</button>
+                    <div class="lightbox-counter">
+                        <span class="lightbox-current">${currentLightboxIndex + 1}</span> / <span class="lightbox-total">${lightboxImages.length}</span>
+                    </div>
+                </div>
+            `;
+            
+            // Estilos del lightbox
+            lightbox.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.95);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            `;
+            
+            const content = lightbox.querySelector('.lightbox-content');
+            content.style.cssText = `
+                position: relative;
+                max-width: 90%;
+                max-height: 90%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            `;
+            
+            const img = lightbox.querySelector('.lightbox-image');
+            img.style.cssText = `
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            `;
+            
+            const closeBtn = lightbox.querySelector('.lightbox-close');
+            closeBtn.style.cssText = `
+                position: absolute;
+                top: -50px;
+                right: -50px;
+                background: rgba(255,255,255,0.9);
+                border: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 20px;
+                color: #333;
+                font-weight: bold;
+                transition: all 0.3s ease;
+                z-index: 1001;
+            `;
+            
+            const prevBtn = lightbox.querySelector('.lightbox-prev');
+            prevBtn.style.cssText = `
+                position: absolute;
+                left: -60px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(255,255,255,0.9);
+                border: none;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 24px;
+                color: #333;
+                font-weight: bold;
+                transition: all 0.3s ease;
+                z-index: 1001;
+            `;
+            
+            const nextBtn = lightbox.querySelector('.lightbox-next');
+            nextBtn.style.cssText = `
+                position: absolute;
+                right: -60px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(255,255,255,0.9);
+                border: none;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 24px;
+                color: #333;
+                font-weight: bold;
+                transition: all 0.3s ease;
+                z-index: 1001;
+            `;
+            
+            const counter = lightbox.querySelector('.lightbox-counter');
+            counter.style.cssText = `
+                position: absolute;
+                bottom: -50px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(255,255,255,0.9);
+                padding: 10px 20px;
+                border-radius: 20px;
+                font-size: 14px;
+                color: #333;
+                font-weight: bold;
+            `;
+            
+            // Eventos
+            closeBtn.addEventListener('click', () => closeLightbox(lightbox));
+            prevBtn.addEventListener('click', () => navigateLightbox(lightbox, -1));
+            nextBtn.addEventListener('click', () => navigateLightbox(lightbox, 1));
+            
+            // Cerrar con click en fondo
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox(lightbox);
+            });
+            
+            // Navegación con teclado
+            const keyHandler = (e) => {
+                if (e.key === 'Escape') closeLightbox(lightbox);
+                if (e.key === 'ArrowLeft') navigateLightbox(lightbox, -1);
+                if (e.key === 'ArrowRight') navigateLightbox(lightbox, 1);
+            };
+            document.addEventListener('keydown', keyHandler);
+            lightbox.keyHandler = keyHandler;
+            
+            // Hover effects
+            [closeBtn, prevBtn, nextBtn].forEach(btn => {
+                btn.addEventListener('mouseenter', () => {
+                    btn.style.background = 'white';
+                    btn.style.transform = btn === prevBtn || btn === nextBtn ? 'translateY(-50%) scale(1.1)' : 'scale(1.1)';
+                });
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.background = 'rgba(255,255,255,0.9)';
+                    btn.style.transform = btn === prevBtn || btn === nextBtn ? 'translateY(-50%) scale(1)' : 'scale(1)';
+                });
+            });
+            
+            // Mostrar
+            document.body.appendChild(lightbox);
+            setTimeout(() => lightbox.style.opacity = '1', 10);
+        }
+        
+        function navigateLightbox(lightbox, direction) {
+            currentLightboxIndex += direction;
+            
+            // Loop infinito
+            if (currentLightboxIndex < 0) currentLightboxIndex = lightboxImages.length - 1;
+            if (currentLightboxIndex >= lightboxImages.length) currentLightboxIndex = 0;
+            
+            // Actualizar imagen
+            const img = lightbox.querySelector('.lightbox-image');
+            const counter = lightbox.querySelector('.lightbox-current');
+            
+            img.style.opacity = '0';
+            setTimeout(() => {
+                img.src = lightboxImages[currentLightboxIndex].src;
+                img.alt = lightboxImages[currentLightboxIndex].alt;
+                counter.textContent = currentLightboxIndex + 1;
+                img.style.opacity = '1';
+            }, 150);
+        }
+        
+        function closeLightbox(lightbox) {
+            // Remover event listener del teclado
+            if (lightbox.keyHandler) {
+                document.removeEventListener('keydown', lightbox.keyHandler);
+            }
+            
+            lightbox.style.opacity = '0';
+            setTimeout(() => lightbox.remove(), 300);
+        }
+    </script>
 </body>
 </html>
